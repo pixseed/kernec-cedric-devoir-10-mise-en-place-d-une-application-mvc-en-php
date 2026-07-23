@@ -21,17 +21,17 @@ Pourquoi cette fonctionnalité est-elle nécessaire ?
 
 ## Tâches
 
-- []
-- []
-- []
+- [ ]
+- [ ]
+- [ ]
 
 ---
 
 ## Critères d'acceptation
 
-- []
-- []
-- []
+- [ ]
+- [ ]
+- [ ]
 
 ---
 

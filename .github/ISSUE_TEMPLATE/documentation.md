@@ -15,9 +15,9 @@ Décrire la documentation à éditer.
 
 ## Contenu attendu
 
-- []
-- []
-- []
+- [ ]
+- [ ]
+- [ ]
 
 ---
 

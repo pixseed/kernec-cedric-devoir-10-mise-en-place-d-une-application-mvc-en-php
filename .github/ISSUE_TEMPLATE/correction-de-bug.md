@@ -35,4 +35,4 @@ Si nécessaire.
 
 ## Correctif
 
-- []
+- [ ]
