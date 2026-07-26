@@ -1,0 +1,804 @@
+:root {
+    /* ========================================
+       Couleurs imposées par le brief
+    ======================================== */
+
+    --color-white: #ffffff;
+    --color-black: #384050;
+    --color-gray: #6b7280;
+
+    --color-primary: #0074c7;
+    --color-primary-dark: #00497c;
+    --color-primary-extra-dark: #00365b;
+
+    --color-success: #82b864;
+    --color-danger: #cd2c2e;
+
+    /* Couleurs de texte */
+    --color-text: var(--color-black);
+    --color-text-secondary: #5f6977;
+    --color-text-inverse: var(--color-white);
+
+    /* Couleurs de bordure */
+    --color-border: #d8e3eb;
+    --color-border-hard: #bfd1dd;
+
+    /* Couleurs de surface */
+    --color-surface: #f8fafc;
+    --color-surface-alt: #f1f8fc;
+    --color-surface-info: #eef7ff;
+    --color-surface-success: #f5faef;
+    --color-surface-danger: #fff3f3;
+
+    /* ========================================
+       Typographie
+    ======================================== */
+
+    --font-size-xs: 10px;
+    --font-size-sm: 11px;
+    --font-size-md: 12px;
+    --font-size-md-alt: 12.5px;
+    --font-size-lg: 14px;
+    --font-size-lg-alt: 15px;
+    --font-size-xl: 17px;
+    --font-size-2xl: 22px;
+    --font-size-3xl: 34px;
+
+    /* ========================================
+       Rayons
+    ======================================== */
+
+    --radius-xs: 1px;
+    --radius-sm: 4px;
+    --radius-md: 6px;
+    --radius-lg: 8px;
+    --radius-xl: 10px;
+    --radius-full: 999px;
+
+    /* ========================================
+       Espacements
+    ======================================== */
+
+    --space-xs: 4px;
+    --space-sm: 8px;
+    --space-md: 12px;
+    --space-lg: 16px;
+    --space-xl: 24px;
+    --space-2xl: 32px;
+    --space-3xl: 64px;
+
+    /* ========================================
+       Bordures
+    ======================================== */
+
+    --border-thin: 1px;
+    --border-medium: 2px;
+    --border-thick: 4px;
+}
+
+/* ========================================
+   Configuration du PDF
+======================================== */
+
+@page {
+    size: A4;
+    margin: 1.4cm;
+}
+
+/* ========================================
+   Style global
+======================================== */
+
+html {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: var(--font-size-sm);
+    line-height: 1.5;
+    color: var(--color-text);
+    background: var(--color-white);
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: var(--space-md);
+}
+
+strong {
+    font-weight: 700;
+}
+
+/* ========================================
+   Titres
+======================================== */
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    page-break-after: avoid;
+}
+
+h1 {
+    margin-top: 60px;
+    margin-bottom: var(--space-lg);
+    color: var(--color-primary-dark);
+    font-size: var(--font-size-3xl);
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+h2 {
+    margin-top: var(--space-lg);
+    margin-bottom: var(--space-lg);
+    padding-bottom: var(--space-sm);
+    border-bottom: var(--border-medium) solid var(--color-primary);
+    color: var(--color-primary-dark);
+    font-size: var(--font-size-2xl);
+    line-height: 1.3;
+}
+
+h3 {
+    margin-top: var(--space-lg);
+    margin-bottom: var(--space-md);
+    color: var(--color-primary);
+    font-size: var(--font-size-xl);
+}
+
+h4 {
+    margin-top: var(--space-lg);
+    margin-bottom: var(--space-sm);
+    color: var(--color-primary-dark);
+    font-size: var(--font-size-lg);
+}
+
+h5 {
+    margin-top: var(--space-lg);
+    margin-bottom: var(--space-sm);
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-md-alt);
+}
+
+h2 + h3 {
+    margin-top: 0;
+}
+
+.title--danger {
+    padding-left: var(--space-md);
+    border-left: var(--border-thick) solid var(--color-danger);
+    color: var(--color-danger);
+    font-weight: 700;
+}
+
+.section-number {
+    background-color: var(--color-primary);
+    padding: var(--space-md);
+    margin-right: var(--space-md);
+    color: var(--color-white);
+}
+
+/* ========================================
+   Page de couverture
+======================================== */
+
+.cover {
+    min-height: 90vh;
+    text-align: center;
+}
+
+.cover h1 {
+    margin-top: var(--space-3xl);
+    margin-bottom: var(--space-md);
+}
+
+.cover__subtitle {
+    margin-bottom: var(--space-2xl);
+    color: var(--color-primary-dark);
+    font-size: var(--font-size-lg-alt);
+    font-weight: 700;
+}
+
+.cover__logo {
+    display: block;
+    width: auto;
+    max-width: 220px;
+    max-height: 160px;
+    margin: var(--space-2xl) auto;
+}
+
+.cover__meta {
+    margin-top: var(--space-2xl);
+}
+
+/* ========================================
+   Introduction de section
+======================================== */
+
+.section-intro {
+    margin-bottom: var(--space-xl);
+    color: var(--color-text-secondary);
+    font-style: italic;
+}
+
+/* ========================================
+   Utilitaires de texte
+======================================== */
+
+.text-underline {
+    text-decoration: underline;
+}
+
+.text-italic {
+    font-style: italic;
+}
+
+.text-bold {
+    font-weight: 700;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.accent--primary {
+    color: var(--color-primary-dark);
+}
+
+.accent--success {
+    color: var(--color-success);
+}
+
+.accent--danger {
+    color: var(--color-danger);
+}
+
+/* ========================================
+   Liens
+======================================== */
+
+a {
+    color: var(--color-primary);
+    text-decoration: none;
+    overflow-wrap: anywhere;
+}
+
+a:hover,
+a:focus {
+    text-decoration: underline;
+}
+
+/* ========================================
+   Listes
+======================================== */
+
+ul,
+ol {
+    margin-top: var(--space-sm);
+    margin-bottom: var(--space-md);
+    padding-left: var(--space-xl);
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    position: relative;
+    margin-bottom: var(--space-xs);
+}
+
+ul > li::before {
+    content: "";
+    position: absolute;
+    top: 0.72em;
+    left: calc(-1 * var(--space-lg));
+    width: 6px;
+    height: 6px;
+    border-radius: var(--radius-xs);
+    background: var(--color-primary);
+    transform: translateY(-50%);
+}
+
+ul ul {
+    margin-top: var(--space-xs);
+    margin-bottom: var(--space-xs);
+}
+
+ul ul > li::before {
+    width: 5px;
+    height: 5px;
+    border: var(--border-thin) solid var(--color-primary);
+    background: transparent;
+}
+
+.custom-list {
+    margin: var(--space-md) 0;
+    padding: 0;
+    list-style: none;
+}
+
+.custom-list li {
+    margin-bottom: var(--space-sm);
+    padding: var(--space-xs) var(--space-md);
+    border-left: var(--border-thick) solid var(--color-primary);
+    background: var(--color-surface);
+}
+
+.custom-list li::before {
+    content: none;
+}
+
+/* ========================================
+   Sommaire
+======================================== */
+
+.toc {
+    margin: var(--space-lg) 0;
+}
+
+.toc ul {
+    margin: 0;
+    padding-left: 0;
+    font-weight: 700;
+}
+
+.toc ul ul {
+    margin-top: var(--space-xs);
+    margin-left: var(--space-md);
+    font-weight: 400;
+}
+
+.toc li {
+    margin-bottom: var(--space-xs);
+}
+
+.toc li::before {
+    content: none;
+}
+
+.toc a {
+    color: var(--color-text);
+    text-decoration: none;
+}
+
+/* ========================================
+   Tableaux
+======================================== */
+
+table {
+    width: 100%;
+    margin: var(--space-lg) 0;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+h3 + table,
+h4 + table,
+h5 + table {
+    margin-top: 0;
+}
+
+table,
+th,
+td {
+    border: var(--border-thin) solid var(--color-border);
+}
+
+th,
+td {
+    padding: var(--space-sm);
+    vertical-align: top;
+    text-align: left;
+    overflow-wrap: anywhere;
+}
+
+thead {
+    color: var(--color-text-inverse);
+    background: var(--color-primary-dark);
+}
+
+tbody tr:nth-child(odd) {
+    background: var(--color-surface);
+}
+
+tbody td:nth-child(1) {
+    font-weight: bold;
+}
+
+table ul,
+table ol {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.table tr {
+    page-break-inside: avoid;
+}
+
+.table--spaced {
+    margin-bottom: var(--space-xl);
+}
+
+.table--compact th,
+.table--compact td {
+    padding: var(--space-xs) var(--space-sm);
+}
+
+.table--center th,
+.table--center td {
+    text-align: center;
+}
+
+/* ========================================
+   Utilitaires pour cellules
+======================================== */
+
+.stack-cell {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+.grid-cell--2-col {
+    display: grid;
+    grid-template-columns: repeat(2, max-content);
+    gap: 6px;
+}
+
+/* ========================================
+   Code et contenu préformaté
+======================================== */
+
+code {
+    padding: 1px var(--space-xs);
+    border-radius: var(--radius-sm);
+    color: var(--color-primary-dark) !important;
+    background: var(--color-surface-alt);
+    font-family: Consolas, "Courier New", monospace;
+}
+
+pre {
+    margin: var(--space-lg) 0;
+    padding: var(--space-md);
+    border-left: var(--border-thick) solid var(--color-primary);
+    border-radius: var(--radius-md);
+    background: var(--color-surface-alt);
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    page-break-inside: avoid;
+}
+
+pre code {
+    padding: 0;
+    background: transparent;
+}
+
+/* ========================================
+   Images
+======================================== */
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: var(--space-lg) auto;
+}
+
+.image--small {
+    max-width: 35%;
+}
+
+.image--medium {
+    max-width: 60%;
+}
+
+.image--large {
+    max-width: 85%;
+}
+
+.image--full {
+    width: 100%;
+}
+
+/* ========================================
+   Cartes
+======================================== */
+
+.card {
+    margin: var(--space-lg) 0;
+    padding: var(--space-md);
+    border: var(--border-thin) solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background: var(--color-surface);
+    page-break-inside: avoid;
+}
+
+.card--center {
+    text-align: center;
+}
+
+.card--variant-1 {
+    border-left: var(--border-thick) solid var(--color-primary);
+    background: var(--color-surface-alt);
+    color: var(--color-primary-dark);
+    font-family: Consolas, "Courier New", monospace;
+    font-size: var(--font-size-lg);
+}
+
+.card--variant-2 {
+    border-left: var(--border-thick) solid var(--color-primary-dark);
+}
+
+.card--with-header {
+    padding: 0;
+    overflow: hidden;
+}
+
+.card--danger {
+    border-color: var(--color-danger);
+    background: var(--color-surface-danger);
+}
+
+.card--success {
+    border-color: var(--color-success);
+    background: var(--color-surface-success);
+}
+
+.card__title {
+    margin-bottom: var(--space-sm);
+    color: var(--color-primary-dark);
+    font-weight: 700;
+}
+
+.card__title--with-header {
+    padding: var(--space-md) var(--space-lg);
+    color: var(--color-white);
+    background: var(--color-primary-dark);
+    font-size: var(--font-size-md);
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.card__text {
+    font-size: var(--font-size-md);
+}
+
+.card__text--with-header {
+    padding: var(--space-lg);
+    background: var(--color-surface);
+}
+
+/* ========================================
+   Encadrés d'information
+======================================== */
+
+.callout {
+    margin: var(--space-lg) 0;
+    padding: var(--space-md) var(--space-lg);
+    border-left: var(--border-thick) solid;
+    border-radius: var(--radius-md);
+    page-break-inside: avoid;
+}
+
+.callout p:last-child {
+    margin-bottom: 0;
+}
+
+.callout--info {
+    border-color: var(--color-primary);
+    background: var(--color-surface-info);
+}
+
+.callout--success {
+    border-color: var(--color-success);
+    background: var(--color-surface-success);
+}
+
+.callout--warning {
+    border-color: var(--color-primary-dark);
+    background: var(--color-surface-alt);
+}
+
+.callout--danger {
+    border-color: var(--color-danger);
+    background: var(--color-surface-danger);
+}
+
+.callout__title {
+    margin-bottom: var(--space-xs);
+    font-weight: 700;
+}
+
+/* ========================================
+   Définitions
+======================================== */
+
+.definition {
+    margin: var(--space-lg) 0;
+    padding: var(--space-md) var(--space-lg);
+    border-left: var(--border-thick) solid var(--color-primary);
+    background: var(--color-surface);
+    page-break-inside: avoid;
+}
+
+.definition__title {
+    margin-bottom: var(--space-xs);
+    color: var(--color-primary-dark);
+    font-weight: 700;
+}
+
+.definition p:last-child {
+    margin-bottom: 0;
+}
+
+/* ========================================
+   Badges
+======================================== */
+
+.badge {
+    display: inline-block;
+    width: fit-content;
+    min-width: 80px;
+    padding: var(--space-xs) var(--space-md);
+    border-radius: var(--radius-full);
+    color: var(--color-text-inverse);
+    background: var(--color-primary);
+    font-weight: 700;
+    text-align: center;
+}
+
+.badge--primary {
+    background: var(--color-primary);
+}
+
+.badge--dark {
+    background: var(--color-primary-dark);
+}
+
+.badge--success {
+    background: var(--color-success);
+}
+
+.badge--danger {
+    background: var(--color-danger);
+}
+
+.badge--small {
+    min-width: 40px;
+    padding: 2px var(--space-sm);
+}
+
+.badge--number {
+    min-width: 20px;
+    padding: 2px var(--space-sm);
+}
+
+/* ========================================
+   Notes
+======================================== */
+
+.note {
+    margin: var(--space-lg) 0;
+    padding: var(--space-md);
+    border-left: var(--border-thick) solid var(--color-text-secondary);
+    color: var(--color-text-secondary);
+    background: var(--color-surface);
+    page-break-inside: avoid;
+}
+
+.note p:last-child {
+    margin-bottom: 0;
+}
+
+/* ========================================
+   Grilles de disposition
+======================================== */
+
+.layout-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+    margin: var(--space-lg) 0;
+    page-break-inside: avoid;
+}
+
+.layout-grid--stack {
+    grid-template-columns: 1fr;
+}
+
+.layout-grid--2 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.layout-grid--3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.layout-grid--4 {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+/* ========================================
+   Panneaux
+======================================== */
+
+.panel {
+    gap: var(--space-md);
+    padding: var(--space-lg) var(--space-xl);
+    border: var(--border-thin) solid var(--color-border);
+    border-radius: var(--radius-xl);
+    background: var(--color-surface);
+    page-break-inside: avoid;
+}
+
+.panel--grid-2-col {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 0;
+}
+
+.panel--grid-2-col > div {
+    padding: 0 var(--space-lg) var(--space-md);
+    border-bottom: var(--border-thin) solid var(--color-border);
+}
+
+.panel--grid-2-col > div:nth-last-child(-n + 2) {
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.panel--center {
+    max-width: 75%;
+    margin-inline: auto;
+}
+
+.panel__label {
+    color: var(--color-primary-dark);
+    font-weight: 700;
+}
+
+.panel__value {
+    overflow-wrap: anywhere;
+}
+
+.panel__label,
+.panel__value {
+    line-height: 1.3;
+}
+
+/* ========================================
+   Ligne horizontale
+======================================== */
+
+hr {
+    margin: var(--space-xl) 0 var(--space-2xl);
+    border: none;
+    border-top: var(--border-thin) solid var(--color-border);
+}
+
+/* ========================================
+   Gestion des sauts de page
+======================================== */
+
+.page-break {
+    break-after: page;
+    page-break-after: always;
+}
+
+.avoid-break {
+    break-inside: avoid;
+    page-break-inside: avoid;
+}
