@@ -348,6 +348,7 @@ Cette organisation repose sur les principes suivants :
 ├── App/
 │   ├── Controller/
 │   │   ├── AdminController.php
+│   │   ├── AgencyController.php
 │   │   ├── AuthController.php
 │   │   ├── HomeController.php
 │   │   └── TripController.php
@@ -399,7 +400,7 @@ Cette organisation repose sur les principes suivants :
 
 | Dossier | Rôle | Contenu prévisionnel |
 |----------|------|----------------------|
-| **App/Controller** | Reçoit les requêtes HTTP et coordonne les traitements de l'application. | `HomeController.php`, `AuthController.php`, `TripController.php`, `AdminController.php` |
+| **App/Controller** | Reçoit les requêtes HTTP et coordonne les traitements de l'application. | `HomeController.php`, `AuthController.php`, `TripController.php`, `AgencyController`, `AdminController.php` |
 | **App/Model** | Représente les données métier et assure les interactions avec la base de données. | `UserModel.php`, `TripModel.php`, `AgencyModel.php` |
 | **App/Core** | Regroupe les classes communes utilisées par l'ensemble de l'application. | `Database.php`, `AbstractController.php`, `AbstractModel.php` |
 | **App/Router** | Gère le routage des requêtes HTTP vers les contrôleurs. | `Router.php` |
