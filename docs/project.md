@@ -596,7 +596,7 @@ Tout au long du développement, des tests sont réalisés afin de vérifier :
 | 1 | Initialisation du projet MVC | Mise en place de l'architecture du projet et de la connexion à la base de données. |
 | 2 | Authentification | Gestion de la connexion, de la déconnexion et des sessions utilisateurs. |
 | 3 | Consultation des trajets | Affichage de la liste des trajets et consultation des informations détaillées. |
-| 4 | Gestion des trajets (CRUD) | Création, modification et suppression des trajets par leur auteur. |
+| 4 | Gestion des trajets | Création, modification et suppression des trajets par leur auteur. |
 | 5 | Administration | Tableau de bord administrateur et gestion des données de l'application. |
 | 6 | Gestion des agences | Création, modification et suppression des agences par l'administrateur. |
 | 7 | Finalisation | Tests, validation, documentation et préparation des livrables. |
