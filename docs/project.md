@@ -347,7 +347,6 @@ Cette organisation repose sur les principes suivants :
 ```
 ├── App/
 │   ├── Controller/
-│   │   ├── AdminController.php
 │   │   ├── AgencyController.php
 │   │   ├── AuthController.php
 │   │   ├── HomeController.php
@@ -400,7 +399,7 @@ Cette organisation repose sur les principes suivants :
 
 | Dossier | Rôle | Contenu prévisionnel |
 |----------|------|----------------------|
-| **App/Controller** | Reçoit les requêtes HTTP et coordonne les traitements de l'application. | `HomeController.php`, `AuthController.php`, `TripController.php`, `AgencyController`, `AdminController.php` |
+| **App/Controller** | Reçoit les requêtes HTTP et coordonne les traitements de l'application. | `HomeController.php`, `AuthController.php`, `TripController.php`, `AgencyController` |
 | **App/Model** | Représente les données métier et assure les interactions avec la base de données. | `UserModel.php`, `TripModel.php`, `AgencyModel.php` |
 | **App/Core** | Regroupe les classes communes utilisées par l'ensemble de l'application. | `Database.php`, `AbstractController.php`, `AbstractModel.php` |
 | **App/Router** | Gère le routage des requêtes HTTP vers les contrôleurs. | `Router.php` |
@@ -597,8 +596,8 @@ Tout au long du développement, des tests sont réalisés afin de vérifier :
 | 2 | Authentification | Gestion de la connexion, de la déconnexion et des sessions utilisateurs. |
 | 3 | Consultation des trajets | Affichage de la liste des trajets et consultation des informations détaillées. |
 | 4 | Gestion des trajets | Création, modification et suppression des trajets par leur auteur. |
-| 5 | Administration | Tableau de bord administrateur et gestion des données de l'application. |
-| 6 | Gestion des agences | Création, modification et suppression des agences par l'administrateur. |
+| 5 | Administrer des agences | Création, modification et suppression des agences par l'administrateur. |
+| 6 | Finaliser l'interface administrateur | Mise en place du header Admin, les liens et les contrôles d'accès. |
 | 7 | Finalisation | Tests, validation, documentation et préparation des livrables. |
 
 ---
