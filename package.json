@@ -1,0 +1,33 @@
+{
+  "name": "kernec-cedric-devoir-10-mise-en-place-d-une-application-mvc-en-php",
+  "version": "1.0.0",
+  "description": "Projet réalisé dans le cadre de la formation Développeur Web et Web Mobile (DWWM) du CEF.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "sass": "sass --watch public/assets/scss/style.scss:public/assets/css/style.css",
+    "copy-assets": "copyfiles -f node_modules/bootstrap/dist/css/bootstrap.min.css public/assets/css && copyfiles -f node_modules/bootstrap/dist/js/bootstrap.bundle.min.js public/assets/js",
+    "postinstall": "npm run copy-assets"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pixseed/kernec-cedric-devoir-10-mise-en-place-d-une-application-mvc-en-php.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pixseed/kernec-cedric-devoir-10-mise-en-place-d-une-application-mvc-en-php/issues"
+  },
+  "homepage": "https://github.com/pixseed/kernec-cedric-devoir-10-mise-en-place-d-une-application-mvc-en-php#readme",
+  "dependencies": {
+    "bootstrap": "^5.3.8",
+    "sass": "^1.102.0"
+  },
+  "devDependencies": {
+    "copyfiles": "^2.4.1"
+  }
+}
