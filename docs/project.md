@@ -349,35 +349,51 @@ Cette organisation repose sur les principes suivants :
 │   ├── Controller/
 │   │   ├── AgencyController.php
 │   │   ├── AuthController.php
+│   │   ├── ErrorController.php
 │   │   ├── HomeController.php
 │   │   └── TripController.php
 │   │
 │   ├── Core/
-│   │   ├── Database.php
 │   │   ├── AbstractController.php
-│   │   └── AbstractModel.php
+│   │   ├── AbstractModel.php
+│   │   ├── Database.php
+│   │   └── Router.php
 │   │
-│   ├── Model/
-│   │   ├── AgencyModel.php
-│   │   ├── TripModel.php
-│   │   └── UserModel.php
-│   │
-│   └── Router/
-│       └── Router.php
+│   └── Model/
+│       ├── AgencyModel.php
+│       ├── TripModel.php
+│       └── UserModel.php
 │
 ├── config/
 │   └── database.php
 │
+├── database/
+│   ├── init.php
+│   ├── queries.sql
+│   ├── schema.sql
+│   └── seed.sql
+│
+├── docs/
+│   ├── assets/
+│   ├── briefs/
+│   ├── src/
+│   ├── styles/
+│   ├── project.md
+│   └── project.pdf
+│
 ├── public/
-│   ├── index.php
-│   └── assets/
-│       ├── css/
-│       ├── images/
-│       └── js/
+│   ├── assets/
+│   │   ├── css/
+│   │   ├── img/
+│   │   ├── js/
+│   │   └── scss/
+│   ├── .htaccess
+│   └── index.php
 │
 ├── templates/
-│   ├── admin/
+│   ├── agency/
 │   ├── auth/
+│   ├── errors/
 │   ├── home/
 │   ├── layouts/
 │   ├── partials/
@@ -389,9 +405,13 @@ Cette organisation repose sur les principes suivants :
 │
 ├── vendor/
 │
+├── .env
+├── .env.example
 ├── .gitignore
 ├── composer.json
 ├── composer.lock
+├── package-lock.json
+├── package.json
 ├── phpstan.neon
 ├── phpunit.xml
 └── README.md
@@ -399,13 +419,14 @@ Cette organisation repose sur les principes suivants :
 
 | Dossier | Rôle | Contenu prévisionnel |
 |----------|------|----------------------|
-| **App/Controller** | Reçoit les requêtes HTTP et coordonne les traitements de l'application. | `HomeController.php`, `AuthController.php`, `TripController.php`, `AgencyController` |
+| **App/Controller** | Reçoit les requêtes HTTP et coordonne les traitements de l'application. | `HomeController.php`, `AuthController.php`, `TripController.php`, `AgencyController`, `ErrorController` |
+| **App/Core** | Regroupe les classes communes utilisées par l'ensemble de l'application. | `Database.php`, `AbstractController.php`, `AbstractModel.php`, `Router.php` |
 | **App/Model** | Représente les données métier et assure les interactions avec la base de données. | `UserModel.php`, `TripModel.php`, `AgencyModel.php` |
-| **App/Core** | Regroupe les classes communes utilisées par l'ensemble de l'application. | `Database.php`, `AbstractController.php`, `AbstractModel.php` |
-| **App/Router** | Gère le routage des requêtes HTTP vers les contrôleurs. | `Router.php` |
 | **config** | Centralise les fichiers de configuration de l'application. | `database.php` |
+| **database** | Contient les fichiers de la base de données SQL. | `init.php`, `queries.sql`, `schema.sql`, `seed.sql` |
+| **docs** | Regroupe tous les fichiers en lien avec la documentation du projet. | `assets/`, `briefs/`, `src/`, `styles/`, `project.md`, `project.pdf` |
 | **public** | Contient le point d'entrée de l'application ainsi que les ressources accessibles depuis le navigateur. | `index.php`, dossier `assets/` |
-| **templates** | Regroupe les vues de l'application organisées par domaine fonctionnel. | `home/`, `auth/`, `trip/`, `admin/`, `layouts/`, `partials/` |
+| **templates** | Regroupe les vues de l'application organisées par domaine fonctionnel. | `home/`, `auth/`, `trip/`, `admin/`, `layouts/`, `partials/`, `errors.php` |
 | **tests** | Contient les tests unitaires et fonctionnels du projet. | Tests PHPUnit des contrôleurs et modèles |
 | **vendor** | Regroupe les dépendances installées via Composer ainsi que l'autoloader. | Dépendances installées automatiquement par Composer ainsi que l'autoloader PSR-4. |
 
