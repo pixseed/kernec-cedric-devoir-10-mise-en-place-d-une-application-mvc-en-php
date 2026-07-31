@@ -10,6 +10,7 @@ class HomeController extends AbstractController
 {
   /**
    * Affiche la page d'accueil.
+   * ----------------------------------------------------------------------------
    */
   public function index(): void
   {

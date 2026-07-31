@@ -13,6 +13,7 @@ abstract class AbstractModel
 
   /**
    * Initialise automatiquement la connexion PDO.
+   * ----------------------------------------------------------------------------
    */
   public function __construct()
   {
