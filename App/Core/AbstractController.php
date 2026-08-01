@@ -67,6 +67,8 @@ abstract class AbstractController
   protected function render(string $view, array $data = []): void
   {
     extract($data);
+
+    $flash = $this->getFlash();
     
     $isAuthenticated = $this->isAuthenticated();
 
@@ -88,5 +90,31 @@ abstract class AbstractController
   {
     header("Location: " . $this->config["base_url"] . $url);
     exit;
+  }
+
+  /**
+   * Enregistre un message flash en session.
+   * ----------------------------------------------------------------------------
+   * @param string $type ─ Type du message (success, danger, warning, info)
+   * @param string $message ─ Contenu du message
+   */
+  protected function setFlash(string $type, string $message): void
+  {
+    $_SESSION["flash"] = [
+      "type" => $type,
+      "message" => $message,
+    ];
+  }
+
+  /**
+   * Récupère le flash de la session, le supprime de la session puis le retourne.
+   */
+  protected function getFlash(): array
+  {
+    $flash = $_SESSION["flash"] ?? [];
+
+    unset($_SESSION["flash"]);
+
+    return $flash;
   }
 }

@@ -11867,6 +11867,10 @@ main {
   padding: 2rem 0;
 }
 
+.alert {
+  margin-bottom: 0;
+}
+
 header .navbar-brand:hover {
   color: #0074c7;
 }

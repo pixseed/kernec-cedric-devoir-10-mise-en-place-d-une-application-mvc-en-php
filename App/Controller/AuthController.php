@@ -87,6 +87,12 @@ class AuthController extends AbstractController
     $_SESSION["lastname"] = $user["lastName"];
     $_SESSION["role"] = $user["role"];
 
+    // Enregistrement du flash de connexion dans la session.
+    $this->setFlash(
+      "success",
+      "Vous êtes connecté avec succès."
+    );
+
     $this->redirect("/");
   }
 
