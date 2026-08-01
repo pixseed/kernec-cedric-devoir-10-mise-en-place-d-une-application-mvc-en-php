@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 use App\Core\Router;
 
+session_start();
+
 require_once __DIR__ . "/../config/init.php";
 
 // Charge la configuration de l'application.

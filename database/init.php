@@ -13,7 +13,7 @@ $dsn = "mysql:host={$config['host']};port={$config['port']};charset={$config['ch
 
 /**
  * Exécute un fichier SQL.
- * 
+ * ----------------------------------------------------------------------------
  * @param PDO $pdo ─ Instance de connexion à la base de données
  * @param string $filePath ─ Chemin du fichier SQL à exécuter
  * 

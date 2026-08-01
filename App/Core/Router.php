@@ -9,12 +9,14 @@ use Exception;
 
 /**
  * Gère les routes de l'application.
+ * ----------------------------------------------------------------------------
  * Rôle : Faire le lien entre une URL et le contrôleur qui doit traiter la requête.
  */
 class Router
 {
   /**
    * Tableau contenant toutes les routes de l'application.
+   * ----------------------------------------------------------------------------
    */
   private array $routes = [
     "GET" => [],
@@ -23,7 +25,7 @@ class Router
 
   /**
    * Ajoute une route à la liste des routes.
-   * 
+   * ----------------------------------------------------------------------------
    * @param string $method ─ Méthode HTTP (GET, POST...)
    * @param string $path ─ URL de la route
    * @param array $action ─ Contrôleur et méthode à exécuter
@@ -35,7 +37,7 @@ class Router
 
   /**
    * Enregistre une nouvelle route GET.
-   * 
+   * ----------------------------------------------------------------------------
    * @param string $path ─ URL de la route
    * @param array $action ─ Contrôleur et méthode à exécuter
    */
@@ -46,7 +48,7 @@ class Router
 
   /**
    * Enregistre une nouvelle route POST.
-   * 
+   * ----------------------------------------------------------------------------
    * @param string $path ─ URL de la route
    * @param array $action ─ Contrôleur et méthode à exécuter
    */
@@ -57,7 +59,7 @@ class Router
 
   /**
    * Recherche la route demandée puis exécute le contrôleur correspondant.
-   * 
+   * ----------------------------------------------------------------------------
    * @param string $method ─ Méthode HTTP (GET, POST...)
    * @param string $path ─ URL de la route
    * @param string $baseUrl ─ URL de base de l'application

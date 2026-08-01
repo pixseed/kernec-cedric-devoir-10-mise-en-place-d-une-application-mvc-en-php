@@ -1,3 +1,3 @@
 <div class="container">
-  <h1>Page d'acceuil</h1>
+  <h1>Éditer une agence</h1>
 </div>

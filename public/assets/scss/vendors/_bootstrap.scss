@@ -1,0 +1,15 @@
+// Variables Bootstrap
+@use "../abstracts/variables" as variables;
+
+// Bootstrap
+@use "../../../../node_modules/bootstrap/scss/bootstrap.scss" with (
+    $primary: variables.$primary,
+    $secondary: variables.$secondary,
+    $light: variables.$light,
+    $dark: variables.$dark,
+    $danger: variables.$danger,
+    $success: variables.$success,
+
+    $body-bg: variables.$light,
+    $body-color: variables.$dark,
+);

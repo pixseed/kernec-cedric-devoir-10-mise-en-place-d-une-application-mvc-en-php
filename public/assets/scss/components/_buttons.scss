@@ -1,0 +1,8 @@
+@use "../abstracts/variables" as variables;
+
+.btn-logout {
+    &:hover {
+        background-color: variables.$danger;
+        border-color: variables.$danger;
+    }
+}

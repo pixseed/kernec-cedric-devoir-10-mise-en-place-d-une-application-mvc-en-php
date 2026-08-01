@@ -6,14 +6,15 @@ namespace App\Controller;
 
 use App\Core\AbstractController;
 
-class ErrorController extends AbstractController
+class UserController extends AbstractController
 {
   /**
-   * Affiche la page 404.
+   * Affiche la liste des utilisateurs.
    * ----------------------------------------------------------------------------
    */
-  public function notFound(): void
+  public function index(): void
   {
-    $this->render("errors/404.php");
+    $this->requireRole("admin");
+    $this->render("user/index.php");
   }
 }

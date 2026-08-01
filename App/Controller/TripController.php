@@ -6,65 +6,65 @@ namespace App\Controller;
 
 use App\Core\AbstractController;
 
-class AgencyController extends AbstractController
+class TripController extends AbstractController
 {
   /**
-   * Affiche la liste des agences.
+   * Affiche la liste des trajets.
    * ----------------------------------------------------------------------------
    */
   public function index(): void
   {
     $this->requireRole("admin");
-    $this->render("agency/index.php");
+    $this->render("trip/index.php");
   }
 
   /**
-   * Affiche le formulaire de création d'agence.
+   * Affiche le formulaire de création de trajet.
    * ----------------------------------------------------------------------------
    */
   public function create(): void
   {
-    $this->requireRole("admin");
+    $this->requireAuthentication();
     $this->render("trip/create.php");
   }
 
   /**
-   * Traite le formulaire de création d'agence.
+   * Traite le formulaire de création de trajet.
    * ----------------------------------------------------------------------------
    */
   public function store(): void
   {
-    $this->requireRole("admin");
-    echo "<p>Agence en cours de création...</p>";
+    $this->requireAuthentication();
+    echo "<p>Trajet en cours de création...</p>";
   }
 
   /**
-   * Affiche le formulaire d'édition d'agence.
+   * Affiche le formulaire d'édition de trajet.
    * ----------------------------------------------------------------------------
    */
   public function edit(): void
   {
-    $this->requireRole("admin");
-    $this->render("agency/edit.php");
+    $this->requireAuthentication();
+    $this->render("trip/edit.php");
   }
 
   /**
-   * Traite le formulaire de modification d'agence.
+   * Traite le formulaire de modification de trajet.
    * ----------------------------------------------------------------------------
    */
   public function update(): void
   {
-    $this->requireRole("admin");
-    echo "<p>Agence en cours de modification...</p>";
+    $this->requireAuthentication();
+    echo "<p>Trajet en cours de modification...</p>";
   }
 
   /**
-   * Traite le formulaire de suppression d'agence.
+   * Traite le formulaire de suppression de trajet.
    * ----------------------------------------------------------------------------
    */
   public function delete(): void
   {
-    $this->requireRole("admin");
-    echo "<p>Agence en cours de suppression...</p>";
+    $this->requireAuthentication();
+    echo "<p>Trajet en cours de suppression...</p>";
   }
 }

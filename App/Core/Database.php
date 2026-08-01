@@ -15,6 +15,7 @@ class Database
 
   /**
    * Établit la connexion PDO à partir de la configuration.
+   * ----------------------------------------------------------------------------
    */
   public function __construct()
   {
@@ -43,6 +44,7 @@ class Database
 
   /**
    * Retourne l'instance PDO.
+   * ----------------------------------------------------------------------------
    */
   public function getConnection(): PDO
   {

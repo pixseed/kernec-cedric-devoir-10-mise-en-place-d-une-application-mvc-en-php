@@ -1,4 +1,29 @@
-@use "variables";
-@use "base";
-@use "layout";
-@use "components";
+// Variables
+@use "abstracts/variables";
+
+// Bootstrap
+@use "vendors/bootstrap";
+
+// Abstracts
+@use "abstracts/functions";
+@use "abstracts/mixins";
+
+// Base
+@use "base/global";
+@use "base/reset";
+@use "base/typography";
+
+// Layout
+@use "layout/header";
+@use "layout/footer";
+
+// Components
+@use "components/buttons";
+@use "components/tables";
+
+// Pages
+@use "pages/home";
+@use "pages/login";
+@use "pages/trip";
+@use "pages/agency";
+@use "pages/user";
