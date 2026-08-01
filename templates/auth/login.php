@@ -3,7 +3,7 @@
     <div class="col-12 col-md-8 col-lg-4">
       <h1 class="display-5 fw-bold text-primary mb-3">Connexion</h1>
 
-      <form method="post">
+      <form method="post" novalidate>
         <div class="mb-3">
           <label for="email" class="form-label">Adresse email</label>
           <input
@@ -11,8 +11,16 @@
             id="email"
             name="email"
             placeholder="Renseignez votre adresse email"
-            class="form-control">
+            value="<?= htmlspecialchars($email ?? '') ?>"
+            class="form-control <?= isset($errors['email']) ? 'is-invalid' : '' ?>">
+
+          <?php if (isset($errors["email"])): ?>
+            <div class="invalid-feedback">
+              <?= $errors["email"] ?>
+            </div>
+          <?php endif; ?>
         </div>
+
 
         <div class="mb-3">
           <label for="password" class="form-label">Mot de passe</label>
@@ -21,8 +29,21 @@
             id="password"
             name="password"
             placeholder="Renseignez votre mot de passe"
-            class="form-control">
+            class="form-control <?= isset($errors['password']) ? 'is-invalid' : '' ?>">
+
+            <?php if (isset($errors["password"])): ?>
+              <div class="invalid-feedback">
+                <?= $errors["password"] ?>
+              </div>
+            <?php endif; ?>
         </div>
+
+
+        <?php if (isset($errors["auth"])): ?>
+          <div class="alert alert-danger">
+            <?= $errors["auth"] ?>
+          </div>
+        <?php endif; ?>
 
         <div>
           <button type="submit" class="btn btn-primary">
