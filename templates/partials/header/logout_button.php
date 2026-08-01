@@ -6,4 +6,4 @@
  */
 ?>
 
-<a href="<?= $baseUrl ?>/logout">Déconnexion</a>
+<a href="<?= $baseUrl ?>/logout" class="btn btn-outline-dark btn-logout">Déconnexion</a>

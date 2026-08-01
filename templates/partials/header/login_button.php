@@ -6,4 +6,4 @@
  */
 ?>
 
-<a href="<?= $baseUrl ?>/login">Connexion</a>
+<a href="<?= $baseUrl ?>/login" class="btn btn-primary">Connexion</a>

@@ -1,0 +1,9 @@
+@use "../abstracts/variables" as variables;
+
+header {
+    .navbar-brand {
+        &:hover {
+            color: variables.$primary;
+        }
+    }
+}

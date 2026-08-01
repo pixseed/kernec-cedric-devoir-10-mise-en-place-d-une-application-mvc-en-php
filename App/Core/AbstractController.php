@@ -62,9 +62,12 @@ abstract class AbstractController
    * Affiche une vue dans le layout principal de l'application.
    * ----------------------------------------------------------------------------
    * @param string $view ─ Chemin de la vue depuis le dossier templates
+   * @param array $data ─ Tableau de données intégré
    */
-  protected function render(string $view): void
+  protected function render(string $view, array $data = []): void
   {
+    extract($data);
+    
     $isAuthenticated = $this->isAuthenticated();
 
     $firstname = $_SESSION["firstname"] ?? "";

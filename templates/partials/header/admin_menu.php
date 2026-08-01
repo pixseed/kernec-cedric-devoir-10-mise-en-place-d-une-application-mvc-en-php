@@ -6,22 +6,18 @@
  */
 ?>
 
-<nav>
-  <ul>
-    <li>
-      <a href="<?=  $baseUrl ?>/users">Utilisateurs</a>
-    </li>
-    <li>
-      <a href="<?=  $baseUrl ?>/agencies">Agences</a>
-    </li>
-    <li>
-      <a href="<?=  $baseUrl ?>/trips">Trajets</a>
-    </li>
-    <li>
-      <?php require __DIR__ . "/user_infos.php" ?>
-    </li>
-    <li>
-      <?php require __DIR__ . "/logout_button.php" ?>
-    </li>
-  </ul>
-</nav>
+<li class="nav-item">
+  <a class="btn btn-dark" href="<?= $baseUrl ?>/users">Utilisateurs</a>
+</li>
+<li class="nav-item">
+  <a class="btn btn-dark" href="<?= $baseUrl ?>/agencies">Agences</a>
+</li>
+<li class="nav-item">
+  <a class="btn btn-dark" href="<?= $baseUrl ?>/trips">Trajets</a>
+</li>
+<li class="nav-item">
+  <?php require __DIR__ . "/user_infos.php" ?>
+</li>
+<li class="nav-item">
+  <?php require __DIR__ . "/logout_button.php" ?>
+</li>

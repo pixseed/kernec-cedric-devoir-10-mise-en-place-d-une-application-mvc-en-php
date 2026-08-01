@@ -15,7 +15,9 @@ class AuthController extends AbstractController
    */
   public function index(): void
   {
-    $this->render("auth/login.php");
+    $this->render("auth/login.php", [
+      "mainClass" => "d-flex justify-content-center align-items-center"
+    ]);
   }
 
   /**

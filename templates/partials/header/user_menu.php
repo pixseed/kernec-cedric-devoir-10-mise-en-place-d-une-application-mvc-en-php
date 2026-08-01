@@ -6,16 +6,12 @@
  */
 ?>
 
-<nav>
-  <ul>
-    <li>
-      <a href="<?= $baseUrl ?>/trips/create">Créer un trajet</a>
-    </li>
-    <li>
-      <?php require __DIR__ . "/user_infos.php" ?>
-    </li>
-    <li>
-      <?php require __DIR__. "/logout_button.php" ?>
-    </li>
-  </ul>
-</nav>
+<li class="nav-item">
+  <a href="<?= $baseUrl ?>/trips/create" class="btn btn-dark">Créer un trajet</a>
+</li>
+<li class="nav-item">
+  <?php require __DIR__ . "/user_infos.php" ?>
+</li>
+<li class="nav-item">
+  <?php require __DIR__ . "/logout_button.php" ?>
+</li>

@@ -6,6 +6,6 @@
  */
 ?>
 
-<a href="<?= $baseUrl ?>">
-  <h1>Touche pas au klaxon</h1>
+<a class="navbar-brand" href="<?= $baseUrl ?>">
+  Touche pas au klaxon
 </a>
