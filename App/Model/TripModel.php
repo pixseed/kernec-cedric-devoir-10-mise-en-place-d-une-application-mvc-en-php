@@ -14,6 +14,7 @@ class TripModel extends AbstractModel {
   {
     $stmt = $this->connection->prepare(
       "SELECT
+          t.idTrip,
           sa.name AS departure,
           t.startDate,
           t.startHour,

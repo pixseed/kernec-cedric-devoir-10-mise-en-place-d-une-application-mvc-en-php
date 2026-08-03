@@ -58,7 +58,6 @@ WHERE idAgency = 13;
 -- =====================================================
 
 -- RQ09 - Créer des trajets
--- Ici, on crée trois trajets afin de tester les autres requêtes de cette même table.
 INSERT INTO trips
 (
     startDate,
@@ -73,37 +72,15 @@ INSERT INTO trips
 )
 VALUES
 (
-    '2026-08-01',
+    '2026-08-30',
     '08:00:00',
-    '2026-08-01',
+    '2026-08-30',
     '10:30:00',
-    4,
-    4,
+    3,
+    2,
     1,
     1,
     2
-),
-(
-    '2026-08-02',
-    '07:45:00',
-    '2026-08-02',
-    '09:15:00',
-    5,
-    2,
-    2,
-    3,
-    5
-),
-(
-    '2026-08-03',
-    '17:30:00',
-    '2026-08-03',
-    '20:00:00',
-    3,
-    0,
-    3,
-    6,
-    4
 );
 
 -- RQ10 - Liste des trajets (administrateur)

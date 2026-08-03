@@ -5,6 +5,7 @@ use App\Helpers\DateHelper;
 /**
  * Variables transmises par HomeController::render() :
  * @var array $trips
+ * @var string $baseUrl
  */
 ?>
 
@@ -41,12 +42,52 @@ use App\Helpers\DateHelper;
               <button
               type="button"
               class="btn"
-              <i class="bi bi-eye"></i>
+              data-url="<?= htmlspecialchars($baseUrl . "/trips/" . $trip["idTrip"]) ?>"
+              aria-label="Voir les détails du trajet"
+              >
+              <i class="bi bi-eye" aria-hidden="true"></i>
             </button>
             </td>
           </tr>
         <?php endforeach ?>
       </tbody>
     </table>
+
+    <div
+      class="modal fade"
+      id="tripDetailsModal"
+      tabindex="-1"
+      aria-labelledby="tripDetailsModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 class="modal-title fs-5" id="tripDetailsModalLabel">Détails du trajet</h2>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <div class="modal-body">
+            <dl class="row mb-0">
+              <dt class="col-sm-4">Auteur</dt>
+              <dd class="col-sm-8" id="tripAuthor"></dd>
+
+              <dt class="col-sm-4">Téléphone</dt>
+              <dd class="col-sm-8" id="tripPhone"></dd>
+
+              <dt class="col-sm-4">Email</dt>
+              <dd class="col-sm-8" id="tripEmail"></dd>
+
+              <dt class="col-sm-4">Nombre total de places</dt>
+              <dd class="col-sm-8" id="tripNumberSeats"></dd>
+            </dl>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
