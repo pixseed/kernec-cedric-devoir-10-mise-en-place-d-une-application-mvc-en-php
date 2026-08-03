@@ -40,3 +40,86 @@ INSERT INTO users (lastName, firstName, phone, email, password, role) VALUES
 ("Lambert","Hugo","0611223366","hugo.lambert@email.fr","$2y$10$Tdmm40Q8GIkrwHJAf33ZQ.JL2VHJSqV.TFTlq2vsYrqZWOH2/H8H6","user"),
 ("Masson","Julie","0733445566","julie.masson@email.fr","$2y$10$E69E2iEOmSLkKiHkhpfC0.9gDbPHsQHBVvD6uFjmwC/XlksRreGzO","user"),
 ("Henry","Arthur","0666554433","arthur.henry@email.fr","$2y$10$WPwltM8LExnBOwZalCfDUeLMdKO.N.oUwyHmQ6f6Xw0PDR1qgLBn.","user");
+
+-- -----------------------------------------------------
+-- Data `touche_pas_au_klaxon`.`trips`
+-- -----------------------------------------------------
+INSERT INTO trips
+(
+    startDate,
+    startHour,
+    endDate,
+    endHour,
+    numberSeats,
+    availableSeats,
+    idUser,
+    idStartAgency,
+    idEndAgency
+)
+VALUES
+(
+    '2026-07-30',
+    '08:00:00',
+    '2026-07-30',
+    '10:30:00',
+    4,
+    4,
+    1,
+    1,
+    2
+),
+(
+    '2026-08-15',
+    '09:00:00',
+    '2026-08-15',
+    '11:30:00',
+    4,
+    0,
+    2,
+    2,
+    3
+),
+(
+    '2026-08-14',
+    '07:30:00',
+    '2026-08-14',
+    '09:45:00',
+    4,
+    3,
+    1,
+    1,
+    3
+),
+(
+    '2026-08-14',
+    '15:00:00',
+    '2026-08-14',
+    '17:30:00',
+    4,
+    2,
+    3,
+    2,
+    1
+),
+(
+    '2026-08-15',
+    '08:15:00',
+    '2026-08-15',
+    '11:00:00',
+    4,
+    1,
+    2,
+    3,
+    1
+),
+(
+    '2026-08-17',
+    '13:45:00',
+    '2026-08-17',
+    '17:00:00',
+    4,
+    4,
+    1,
+    2,
+    3
+);

@@ -8,6 +8,11 @@ use App\Core\AbstractModel;
 
 class UserModel extends AbstractModel
 {
+  /**
+   * Recherche un utilisateur via l'email.
+   * ----------------------------------------------------------------------------
+   * @param string $email ─ Adresse email de l'utilisateur recherché
+   */
   public function findByEmail(string $email)
   {
     $stmt = $this->connection->prepare(
