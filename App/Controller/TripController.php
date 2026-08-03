@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Core\AbstractController;
+use App\Model\TripModel;
 
 class TripController extends AbstractController
 {
@@ -16,6 +17,20 @@ class TripController extends AbstractController
   {
     $this->requireRole("admin");
     $this->render("trip/index.php");
+  }
+
+  /**
+   * 
+   */
+  public function show(int $id): void
+  {
+    $tripModel = new TripModel();
+
+    $trip = $tripModel->findById($id);
+
+    header("Content-Type: application/json");
+
+    echo json_encode($trip);
   }
 
   /**

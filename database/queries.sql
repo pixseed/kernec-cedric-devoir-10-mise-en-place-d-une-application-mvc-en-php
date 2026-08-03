@@ -109,10 +109,10 @@ VALUES
 -- RQ10 - Liste des trajets (administrateur)
 SELECT
     sa.name AS departure,
-	t.startDate,
+    t.startDate,
     t.startHour,
     ea.name AS destination,
-	t.endDate,
+    t.endDate,
     t.endHour,
     t.availableSeats
 FROM trips t
@@ -125,10 +125,10 @@ ORDER BY t.startDate, t.startHour;
 -- RQ11 - Liste des trajets (page d'accueil)
 SELECT
     sa.name AS departure,
-	t.startDate,
+	  t.startDate,
     t.startHour,
     ea.name AS destination,
-	t.endDate,
+	  t.endDate,
     t.endHour,
     t.availableSeats
 FROM trips t
@@ -156,7 +156,7 @@ WHERE idTrip = 1;
 
 -- RQ15 - Informations complémentaires d'un trajet (modale)
 SELECT
-    CONCAT(u.firstName, ' ', u.lastName) AS author,
+    CONCAT(u.lastName, ' ', u.firstName) AS author,
     u.phone,
     u.email,
     t.numberSeats

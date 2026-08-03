@@ -11887,4 +11887,8 @@ header .navbar-brand:hover {
   border-color: #cd2c2e;
 }
 
+.table-responsive {
+  overflow: auto;
+}
+
 /*# sourceMappingURL=style.css.map */
