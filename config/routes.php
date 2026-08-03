@@ -1,34 +1,31 @@
 <?php
 
-use App\Controller\AgencyController;
-use App\Controller\AuthController;
-use App\Controller\HomeController;
-use App\Controller\TripController;
-use App\Controller\UserController;
-
 // Accueil
-$router->get("/", [HomeController::class, "index"]);
+$router->get("/", "HomeController@index");
 
 // Authentification
-$router->get("/login", [AuthController::class, "index"]);
-$router->post("/login", [AuthController::class, "login"]);
-$router->get("/logout", [AuthController::class, "logout"]);
+$router->get("/login", "AuthController@index");
+$router->post("/login", "AuthController@login");
+$router->get("/logout", "AuthController@logout");
 
 // Trajets
-$router->get("/trips", [TripController::class, "index"]);
-$router->get("/trips/create", [TripController::class, "create"]);
-$router->post("/trips", [TripController::class, "store"]);
-$router->get("/trips/edit/{id}", [TripController::class, "edit"]);
-$router->post("/trips/update/{id}", [TripController::class, "update"]);
-$router->post("/trips/delete/{id}", [TripController::class, "delete"]);
+$router->get("/trips", "TripController@index");
+$router->get("/trips/create", "TripController@create");
+$router->post("/trips", "TripController@store");
+
+$router->get("/trips/:id", 'TripController@show');
+$router->get("/trips/edit/:id", "TripController@edit");
+$router->post("/trips/update/:id", "TripController@update");
+$router->post("/trips/delete/:id", "TripController@delete");
 
 // Agences
-$router->get("/agencies", [AgencyController::class, "index"]);
-$router->get("/agencies/create", [AgencyController::class, "create"]);
-$router->post("/agencies", [AgencyController::class, "store"]);
-$router->get("/agencies/edit/{id}", [AgencyController::class, "edit"]);
-$router->post("/agencies/udpate/{id}", [AgencyController::class, "update"]);
-$router->post("/agencies/delete/{id}", [AgencyController::class, "delete"]);
+$router->get("/agencies", "AgencyController@index");
+$router->get("/agencies/create", "AgencyController@create");
+$router->post("/agencies", "AgencyController@store");
+
+$router->get("/agencies/edit/:id", "AgencyController@edit");
+$router->post("/agencies/update/:id", "AgencyController@update");
+$router->post("/agencies/delete/:id", "AgencyController@delete");
 
 // Utilisateurs
-$router->get("/users", [UserController::class, "index"]);
+$router->get("/users", "UserController@index");

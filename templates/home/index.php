@@ -41,7 +41,6 @@ use App\Helpers\DateHelper;
               <button
               type="button"
               class="btn"
-              data-id="<?= $trip["idTrip"] ?>">
               <i class="bi bi-eye"></i>
             </button>
             </td>

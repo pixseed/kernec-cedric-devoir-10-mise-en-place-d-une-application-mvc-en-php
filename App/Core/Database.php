@@ -23,7 +23,7 @@ class Database
 
     try {
       $this->connection = new PDO(
-        "mysql:host={$config["host"]};dbname={$config["dbname"]};charset={$config["charset"]}",
+        "mysql:host={$config["host"]};port={$config["port"]};dbname={$config["dbname"]};charset={$config["charset"]}",
         $config["username"],
         $config["password"],
         [
