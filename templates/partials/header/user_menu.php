@@ -1,13 +1,13 @@
 <?php
 
 /**
- * Variables transmises par AbstractController::render() :
- * @var string  $baseUrl
+ * Variables disponibles dans cette vue :
+ * @var string  $baseFolder
  */
 ?>
 
 <li class="nav-item">
-  <a href="<?= $baseUrl ?>/trips/create" class="btn btn-dark">Créer un trajet</a>
+  <a href="<?= $baseFolder ?>/trips/create" class="btn btn-dark">Créer un trajet</a>
 </li>
 <li class="nav-item">
   <?php require __DIR__ . "/user_infos.php" ?>

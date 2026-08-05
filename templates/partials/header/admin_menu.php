@@ -1,19 +1,19 @@
 <?php
 
 /**
- * Variables transmises par AbstractController::render() :
- * @var string  $baseUrl
+ * Variables disponibles dans cette vue :
+ * @var string  $baseFolder
  */
 ?>
 
 <li class="nav-item">
-  <a class="btn btn-dark" href="<?= $baseUrl ?>/users">Utilisateurs</a>
+  <a class="btn btn-dark" href="<?= $baseFolder ?>/users">Utilisateurs</a>
 </li>
 <li class="nav-item">
-  <a class="btn btn-dark" href="<?= $baseUrl ?>/agencies">Agences</a>
+  <a class="btn btn-dark" href="<?= $baseFolder ?>/agencies">Agences</a>
 </li>
 <li class="nav-item">
-  <a class="btn btn-dark" href="<?= $baseUrl ?>/trips">Trajets</a>
+  <a class="btn btn-dark" href="<?= $baseFolder ?>/trips">Trajets</a>
 </li>
 <li class="nav-item">
   <?php require __DIR__ . "/user_infos.php" ?>

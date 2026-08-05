@@ -16,7 +16,7 @@
 
           <?php if (isset($errors["email"])): ?>
             <div class="invalid-feedback">
-              <?= $errors["email"] ?>
+              <?= htmlspecialchars($errors["email"]) ?>
             </div>
           <?php endif; ?>
         </div>
@@ -33,7 +33,7 @@
 
             <?php if (isset($errors["password"])): ?>
               <div class="invalid-feedback">
-                <?= $errors["password"] ?>
+                <?= htmlspecialchars($errors["password"]) ?>
               </div>
             <?php endif; ?>
         </div>
@@ -41,7 +41,7 @@
 
         <?php if (isset($errors["auth"])): ?>
           <div class="alert alert-danger">
-            <?= $errors["auth"] ?>
+            <?= htmlspecialchars($errors["auth"]) ?>
           </div>
         <?php endif; ?>
 

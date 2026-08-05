@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Variables transmises par AbstractController::render() :
- * @var string  $baseUrl
+ * Variables disponibles dans cette vue :
+ * @var string  $baseFolder
  */
 ?>
 
-<a href="<?= $baseUrl ?>/logout" class="btn btn-outline-dark btn-logout">Déconnexion</a>
+<a href="<?= $baseFolder ?>/logout" class="btn btn-outline-dark btn-logout">Déconnexion</a>

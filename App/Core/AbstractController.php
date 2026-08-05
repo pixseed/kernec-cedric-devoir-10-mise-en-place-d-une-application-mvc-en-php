@@ -76,7 +76,13 @@ abstract class AbstractController
     $lastname = $_SESSION["lastname"] ?? "";
     $role = $_SESSION["role"] ?? "";
 
+    // URL absolue de l'application → À utiliser pour les ressources et redirections.
+    // Ex : CSS, JS, img...
     $baseUrl = $this->config["base_url"];
+    
+    // Chemin de base de l'pplication → À utiliser pour les routes internes
+    // Ex : href, action de formulaire, fetch, data-url...
+    $baseFolder = $this->config["base_folder"];
 
     require __DIR__ . "/../../templates/layouts/app.php";
   }

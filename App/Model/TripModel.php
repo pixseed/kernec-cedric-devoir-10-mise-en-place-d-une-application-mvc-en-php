@@ -9,6 +9,7 @@ use App\Core\AbstractModel;
 class TripModel extends AbstractModel {
   /**
    * Recherche tous les trajets disponibles à venir.
+   * ----------------------------------------------------------------------------
    */
   public function findAllAvailable(): array
   {
@@ -55,13 +56,61 @@ class TripModel extends AbstractModel {
       FROM trips t
       INNER JOIN users u
           ON t.idUser = u.idUser
-      WHERE t.idTrip = ?"
+      WHERE t.idTrip = :idTrip"
     );
 
-    $stmt->execute([$idTrip]);
+    $stmt->execute([
+      ":idTrip" => $idTrip
+    ]);
 
     $trip = $stmt->fetch();
 
     return $trip;
+  }
+
+  /**
+   * Insert les données dans la base.
+   * ----------------------------------------------------------------------------
+   * @param array $data ─ Tableau des données à insérer dans la base
+   */
+  public function insert(array $data): void
+  {
+    $stmt = $this->connection->prepare(
+      "INSERT INTO trips
+      (
+          startDate,
+          startHour,
+          endDate,
+          endHour,
+          numberSeats,
+          availableSeats,
+          idUser,
+          idStartAgency,
+          idEndAgency
+      )
+      VALUES (
+          :startDate,
+          :startHour,
+          :endDate,
+          :endHour,
+          :numberSeats,
+          :availableSeats,
+          :idUser,
+          :idStartAgency,
+          :idEndAgency
+      );"
+    );
+
+    $stmt->execute([
+      ":startDate"      => $data["startDate"],
+      ":startHour"      => $data["startHour"],
+      ":endDate"        => $data["endDate"],
+      ":endHour"        => $data["endHour"],
+      ":numberSeats"    => $data["numberSeats"],
+      ":availableSeats" => $data["availableSeats"],
+      ":idUser"         => $data["idUser"],
+      ":idStartAgency"  => $data["idStartAgency"],
+      ":idEndAgency"    => $data["idEndAgency"]
+    ]);
   }
 }

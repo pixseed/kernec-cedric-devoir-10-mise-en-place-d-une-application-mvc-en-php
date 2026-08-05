@@ -1,11 +1,11 @@
 <?php
 
 /**
- * Variables transmises par AbstractController::render() :
- * @var string  $baseUrl
+ * Variables disponibles dans cette vue :
+ * @var string  $baseFolder
  */
 ?>
 
-<a class="navbar-brand" href="<?= $baseUrl ?>">
+<a class="navbar-brand" href="<?= $baseFolder ?>">
   Touche pas au klaxon
 </a>

@@ -1,9 +1,10 @@
 <?php
 
 /**
- * Vue transmise par AbstractController::render() :
+ * Variables disponibles dans cette vue :
  * @var string $view
  * @var string $baseUrl
+ * @var string|null $mainClass
  */
 ?>
 

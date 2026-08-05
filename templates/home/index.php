@@ -3,9 +3,9 @@
 use App\Helpers\DateHelper;
 
 /**
- * Variables transmises par HomeController::render() :
+ * Variables disponibles dans cette vue :
  * @var array $trips
- * @var string $baseUrl
+ * @var string $baseFolder
  */
 ?>
 
@@ -42,7 +42,7 @@ use App\Helpers\DateHelper;
               <button
               type="button"
               class="btn"
-              data-url="<?= htmlspecialchars($baseUrl . "/trips/" . $trip["idTrip"]) ?>"
+              data-url="<?= htmlspecialchars($baseFolder . "/trips/" . $trip["idTrip"]) ?>"
               aria-label="Voir les détails du trajet"
               >
               <i class="bi bi-eye" aria-hidden="true"></i>

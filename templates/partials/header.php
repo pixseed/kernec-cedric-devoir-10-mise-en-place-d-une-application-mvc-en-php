@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Variables transmises par AbstractController::render() :
+ * Variables disponibles dans cette vue :
  * @var bool    $isAuthenticated
  * @var string  $role
  */

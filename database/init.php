@@ -39,8 +39,11 @@ try {
     $config["username"],
     $config["password"],
     [
+      // Déclenche une exception lorsqu'une erreur SQL survient.
       PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+      // Retourne automatiquement les résultats sous forme de tableau associatif.
       PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+      // Utilise les vraies requêtes préparées du serveur MySQL pour une meilleure sécurité.
       PDO::ATTR_EMULATE_PREPARES => false,
     ]
   );

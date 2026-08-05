@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Variables transmises par AbstractController::render() :
- * @var string  $baseUrl
+ * Variables disponibles dans cette vue :
+ * @var string  $baseFolder
  */
 ?>
 
-<a href="<?= $baseUrl ?>/login" class="btn btn-primary">Connexion</a>
+<a href="<?= $baseFolder ?>/login" class="btn btn-primary">Connexion</a>
