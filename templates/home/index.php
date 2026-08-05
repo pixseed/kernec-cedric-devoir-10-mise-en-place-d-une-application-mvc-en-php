@@ -40,16 +40,23 @@ use App\Helpers\DateHelper;
 
             <td>
               <button
-              type="button"
-              class="btn"
-              data-url="<?= htmlspecialchars($baseFolder . "/trips/" . $trip["idTrip"]) ?>"
-              aria-label="Voir les détails du trajet"
-              >
-              <i class="bi bi-eye" aria-hidden="true"></i>
-            </button>
+                type="button"
+                class="btn"
+                data-url="<?= htmlspecialchars($baseFolder . "/trips/" . $trip["idTrip"]) ?>"
+                aria-label="Voir les détails du trajet">
+                <i class="bi bi-eye" aria-hidden="true"></i>
+              </button>
+              <?php if ($trip["idUser"] === $_SESSION["user_id"]): ?>
+                <a
+                  href="<?= htmlspecialchars($baseFolder . "/trips/edit/" . $trip["idTrip"]) ?>"
+                  class="btn"
+                  aria-label="Éditer le trajet">
+                  <i class="bi bi-pencil-square" aria-hidden="true"></i>
+                </a>
+              <?php endif; ?>
             </td>
           </tr>
-        <?php endforeach ?>
+        <?php endforeach; ?>
       </tbody>
     </table>
 
@@ -58,8 +65,7 @@ use App\Helpers\DateHelper;
       id="tripDetailsModal"
       tabindex="-1"
       aria-labelledby="tripDetailsModalLabel"
-      aria-hidden="true"
-    >
+      aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
           <div class="modal-header">
