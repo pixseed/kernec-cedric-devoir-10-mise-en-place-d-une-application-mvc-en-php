@@ -1,9 +1,10 @@
 <?php
 
 /**
- * Vue transmise par AbstractController::render() :
+ * Variables disponibles dans cette vue :
  * @var string $view
  * @var string $baseUrl
+ * @var string|null $mainClass
  */
 ?>
 
@@ -20,15 +21,15 @@
 
 <body class="d-flex flex-column min-vh-100">
 
-  <?php require __DIR__ . "/../partials/header.php"; ?>
+  <?php require __DIR__ . "/../partials/_header.php"; ?>
 
-  <?php require __DIR__ . "/../partials/flash.php"; ?>
+  <?php require __DIR__ . "/../partials/_flash.php"; ?>
 
   <main class="flex-grow-1 <?= $mainClass ?? '' ?>">
     <?php require __DIR__ . "/../" . $view; ?>
   </main>
 
-  <?php require __DIR__ . "/../partials/footer.php"; ?>
+  <?php require __DIR__ . "/../partials/_footer.php"; ?>
 
   <script type="module" src="<?= $baseUrl ?>/assets/js/bootstrap.bundle.min.js"></script>
   <script type="module" src="<?= $baseUrl ?>/assets/js/main.js"></script>

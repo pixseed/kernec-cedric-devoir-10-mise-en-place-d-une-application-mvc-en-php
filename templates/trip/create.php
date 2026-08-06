@@ -1,3 +1,1 @@
-<div class="container">
-  <h1>Créer un trajet</h1>
-</div>
+<?php require __DIR__ . "/_form.php"; ?>

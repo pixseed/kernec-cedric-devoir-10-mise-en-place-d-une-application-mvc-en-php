@@ -1,3 +1,7 @@
+/**
+ * Initialise la fermeture automatique des messages flash.
+ * ---------------------------------------------------------------------------- 
+ */
 function initFlash() {
   const flashMessage = document.getElementById("flash-message");
 
@@ -7,6 +11,7 @@ function initFlash() {
 
   const flashContainer = flashMessage.closest(".container");
 
+  // Supprime le container une fois l'alerte fermée.
   flashMessage.addEventListener("closed.bs.alert", () => {
     flashContainer?.remove();
   });
@@ -18,17 +23,22 @@ function initFlash() {
   }, 5000);
 }
 
+/**
+ * Initialise la modale affichant les détails d'un trajet.
+ * ---------------------------------------------------------------------------- 
+ */
 function initTripModal() {
   const buttons = document.querySelectorAll("[data-url]");
   const modalElement = document.getElementById("tripDetailsModal");
 
   const modal = new bootstrap.Modal(modalElement);
 
+  // Associe un événement à chaque bouton de suppression.
   buttons.forEach((button) => {
     button.addEventListener("click", () => {
-      
+      // Récupère les données du trajet puis met à jour la modale.
       const url = button.dataset.url;
-      
+
       fetch(url)
         .then((response) => response.json())
         .then((trip) => {
@@ -40,8 +50,33 @@ function initTripModal() {
           modal.show();
         })
         .catch((error) => {
-          console.error("Erreur lors de la récupération des détails du trajet :", error);
+          console.error(
+            "Erreur lors de la récupération des détails du trajet :",
+            error,
+          );
         });
+    });
+  });
+}
+
+/**
+ * Initialise la modale de confirmation de suppression d'un trajet.
+ */
+function initDeleteModal() {
+  const buttons = document.querySelectorAll("[data-action]");
+  const modalElement = document.getElementById("deleteTripModal");
+  const form = document.getElementById("delete-trip-form");
+
+  const modal = new bootstrap.Modal(modalElement);
+
+  // Associe un événement à chaque bouton de suppression.
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      // Définit l'action du formulaire selon le trajet sélectionné.
+      const action = button.dataset.action;
+      form.action = action;
+
+      modal.show();
     });
   });
 }
@@ -52,3 +87,4 @@ function initTripModal() {
 
 initFlash();
 initTripModal();
+initDeleteModal();

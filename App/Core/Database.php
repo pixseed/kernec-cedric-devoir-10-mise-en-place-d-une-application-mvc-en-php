@@ -22,13 +22,17 @@ class Database
     $config = require __DIR__ . "/../../config/database.php";
 
     try {
+      // Construit le DSN pour se connecter au serveur MySQL.
       $this->connection = new PDO(
         "mysql:host={$config["host"]};port={$config["port"]};dbname={$config["dbname"]};charset={$config["charset"]}",
         $config["username"],
         $config["password"],
         [
+          // Déclenche une exception lorsqu'une erreur SQL survient.
           PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+          // Retourne automatiquement les résultats sous forme de tableau associatif.
           PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+          // Utilise les vraies requêtes préparées du serveur MySQL pour une meilleure sécurité.
           PDO::ATTR_EMULATE_PREPARES => false,
         ]
       );
@@ -43,7 +47,7 @@ class Database
   }
 
   /**
-   * Retourne l'instance PDO.
+   * Retourne l'instance PDO de connexion à la base de données.
    * ----------------------------------------------------------------------------
    */
   public function getConnection(): PDO

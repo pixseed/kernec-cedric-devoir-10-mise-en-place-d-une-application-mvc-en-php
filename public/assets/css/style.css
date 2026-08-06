@@ -11882,9 +11882,17 @@ header .navbar-brand:hover {
   text-decoration: underline;
 }
 
-.btn-logout:hover {
+.btn-logout:hover,
+.btn-reset:hover,
+.btn-clear:hover {
   background-color: #cd2c2e;
   border-color: #cd2c2e;
+}
+
+.btn-cancel:hover,
+.btn-return:hover {
+  background-color: #384050;
+  border-color: #384050;
 }
 
 .table-responsive {
