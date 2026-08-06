@@ -86,7 +86,7 @@ class TripModel extends AbstractModel {
         endDate,
         endHour,
         numberSeats,
-        availableSeats
+        availableSeats,
         idUser,
         idStartAgency,
         idEndAgency
@@ -181,6 +181,22 @@ class TripModel extends AbstractModel {
       ":idStartAgency"  => $data["idStartAgency"],
       ":idEndAgency"    => $data["idEndAgency"],
       ":idTrip"         => $idTrip,
+    ]);
+  }
+
+  /**
+   * Supprime un trajet dans la base.
+   * ----------------------------------------------------------------------------
+   */
+  public function delete(int $idTrip): bool
+  {
+    $stmt = $this->connection->prepare(
+      "DELETE FROM trips
+      WHERE idTrip = :idTrip"
+    );
+
+    return $stmt->execute([
+      ":idTrip" => $idTrip
     ]);
   }
 }

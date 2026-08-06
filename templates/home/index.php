@@ -53,6 +53,13 @@ use App\Helpers\DateHelper;
                   aria-label="Éditer le trajet">
                   <i class="bi bi-pencil-square" aria-hidden="true"></i>
                 </a>
+                <button
+                  type="button"
+                  class="btn"
+                  data-action="<?= htmlspecialchars($baseFolder . "/trips/delete/" . $trip["idTrip"]) ?>"
+                  aria-label="Supprimer le trajet">
+                  <i class="bi bi-trash3-fill" aria-hidden="true"></i>
+                </button>
               <?php endif; ?>
             </td>
           </tr>
@@ -60,40 +67,8 @@ use App\Helpers\DateHelper;
       </tbody>
     </table>
 
-    <div
-      class="modal fade"
-      id="tripDetailsModal"
-      tabindex="-1"
-      aria-labelledby="tripDetailsModalLabel"
-      aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h2 class="modal-title fs-5" id="tripDetailsModalLabel">Détails du trajet</h2>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
+    <?php require __DIR__ . "/../partials/modals/_tripDetailsModal.php"; ?>
+    <?php require __DIR__ . "/../partials/modals/_deleteTripModal.php"; ?>
 
-          <div class="modal-body">
-            <dl class="row mb-0">
-              <dt class="col-sm-4">Auteur</dt>
-              <dd class="col-sm-8" id="tripAuthor"></dd>
-
-              <dt class="col-sm-4">Téléphone</dt>
-              <dd class="col-sm-8" id="tripPhone"></dd>
-
-              <dt class="col-sm-4">Email</dt>
-              <dd class="col-sm-8" id="tripEmail"></dd>
-
-              <dt class="col-sm-4">Nombre total de places</dt>
-              <dd class="col-sm-8" id="tripNumberSeats"></dd>
-            </dl>
-          </div>
-
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </div>

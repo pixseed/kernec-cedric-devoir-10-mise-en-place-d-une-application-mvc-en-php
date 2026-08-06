@@ -172,11 +172,35 @@ class TripController extends AbstractController
   /**
    * Traite le formulaire de suppression de trajet.
    * ----------------------------------------------------------------------------
+   * @param int $id ─ Identifiant unique du trajet
    */
-  public function delete(): void
+  public function delete(int $id): void
   {
     $this->requireAuthentication();
-    echo "<p>Trajet en cours de suppression...</p>";
+
+    // Vérifie que le trajet appartient à l'utilisateur connecté.
+    try {
+      $this->getOwnedTrip($id);
+    } catch (Exception $e) {
+      $this->setFlash(
+        "danger",
+        $e->getMessage()
+      );
+
+      $this->redirect("/");
+      return;
+    }
+
+    // Suppression des données dans la base.
+    $tripModel = new TripModel();
+    $tripModel->delete($id);
+
+    $this->setFlash(
+      "success",
+      "Le trajet a été supprimé avec succès."
+    );
+
+    $this->redirect("/");
   }
 
   /**
@@ -197,7 +221,7 @@ class TripController extends AbstractController
     }
 
     // Vérifier que le trajet appartient à l'utilisateur connecté.
-    if (!$trip["idUser"] !== $_SESSION["user_id"]) {
+    if ($trip["idUser"] !== $_SESSION["user_id"]) {
       throw new Exception("Vous n'êtes pas autorisé à modifier ce trajet.");
     }
 
