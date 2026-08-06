@@ -183,6 +183,13 @@ $submitLabel = $isEdit
               </option>
             <?php endforeach; ?>
           </select>
+
+          <?php if (isset($errors["idEndAgency"])): ?>
+            <div class="invalid-feedback">
+              <?= htmlspecialchars($errors["idEndAgency"]) ?>
+            </div>
+          <?php endif; ?>
+
           <?php if (isset($errors["sameAgency"])): ?>
             <div class="invalid-feedback">
               <?= htmlspecialchars($errors["sameAgency"]) ?>

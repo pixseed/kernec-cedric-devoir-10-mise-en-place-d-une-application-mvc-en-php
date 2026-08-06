@@ -10,7 +10,7 @@
 <header class="header">
   <nav class="navbar navbar-expand-lg py-3 shadow-sm">
     <div class="container">
-      <?php require __DIR__ . "/header/logo.php"; ?>
+      <?php require __DIR__ . "/header/_logo.php"; ?>
     
       <button
         class="navbar-toggler"
@@ -28,13 +28,13 @@
       <div class="collapse navbar-collapse" id="mainNavbar">
         <ul class="navbar-nav ms-auto gap-2 align-items-lg-center">
           <?php if (!$isAuthenticated): ?>
-            <?php require __DIR__ . "/header/guest_menu.php" ?>
+            <?php require __DIR__ . "/header/_guest_menu.php" ?>
         
           <?php elseif ($role === "admin"): ?>
-            <?php require __DIR__ . "/header/admin_menu.php" ?>
+            <?php require __DIR__ . "/header/_admin_menu.php" ?>
         
           <?php else: ?>
-            <?php require __DIR__ . "/header/user_menu.php" ?>
+            <?php require __DIR__ . "/header/_user_menu.php" ?>
         
           <?php endif ?>
         </ul>

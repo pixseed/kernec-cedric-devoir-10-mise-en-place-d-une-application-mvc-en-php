@@ -10,8 +10,8 @@
   <a href="<?= $baseFolder ?>/trips/create" class="btn btn-dark">Créer un trajet</a>
 </li>
 <li class="nav-item">
-  <?php require __DIR__ . "/user_infos.php" ?>
+  <?php require __DIR__ . "/_user_infos.php" ?>
 </li>
 <li class="nav-item">
-  <?php require __DIR__ . "/logout_button.php" ?>
+  <?php require __DIR__ . "/_logout_button.php" ?>
 </li>
