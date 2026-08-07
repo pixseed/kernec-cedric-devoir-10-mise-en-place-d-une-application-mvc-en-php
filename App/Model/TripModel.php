@@ -80,16 +80,16 @@ class TripModel extends AbstractModel {
   {
     $stmt = $this->connection->prepare(
       "SELECT
-        idTrip,
-        startDate,
-        startHour,
-        endDate,
-        endHour,
-        numberSeats,
-        availableSeats,
-        idUser,
-        idStartAgency,
-        idEndAgency
+          idTrip,
+          startDate,
+          startHour,
+          endDate,
+          endHour,
+          numberSeats,
+          availableSeats,
+          idUser,
+          idStartAgency,
+          idEndAgency
       FROM trips
       WHERE idTrip = :idTrip"
     );
@@ -160,14 +160,14 @@ class TripModel extends AbstractModel {
     $stmt = $this->connection->prepare(
       "UPDATE trips
       SET
-        startDate = :startDate,
-        startHour = :startHour,
-        endDate = :endDate,
-        endHour = :endHour,
-        numberSeats = :numberSeats,
-        availableSeats = :availableSeats,
-        idStartAgency = :idStartAgency,
-        idEndAgency = :idEndAgency
+          startDate = :startDate,
+          startHour = :startHour,
+          endDate = :endDate,
+          endHour = :endHour,
+          numberSeats = :numberSeats,
+          availableSeats = :availableSeats,
+          idStartAgency = :idStartAgency,
+          idEndAgency = :idEndAgency
       WHERE idTrip = :idTrip"
     );
 

@@ -37,8 +37,8 @@ class AgencyModel extends AbstractModel {
   {
     $stmt = $this->connection->prepare(
       "SELECT
-        idAgency,
-        name
+          idAgency,
+          name
       FROM agencies
       WHERE idAgency = :idAgency"
     );
