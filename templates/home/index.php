@@ -28,27 +28,27 @@ use App\Helpers\DateHelper;
       </thead>
 
       <tbody>
-        <?php foreach ($trips as $trip): ?>
+        <?php foreach ($trips as $tripItem): ?>
           <tr>
-            <td><?= htmlspecialchars($trip["departure"]) ?></td>
-            <td><?= htmlspecialchars(DateHelper::formatDate($trip["startDate"])) ?></td>
-            <td><?= htmlspecialchars(DateHelper::formatHour($trip["startHour"])) ?></td>
-            <td><?= htmlspecialchars($trip["arrival"]) ?></td>
-            <td><?= htmlspecialchars(DateHelper::formatDate($trip["endDate"])) ?></td>
-            <td><?= htmlspecialchars(DateHelper::formatHour($trip["endHour"])) ?></td>
-            <td><?= htmlspecialchars($trip["availableSeats"]) ?></td>
+            <td><?= htmlspecialchars($tripItem["departure"]) ?></td>
+            <td><?= htmlspecialchars(DateHelper::formatDate($tripItem["startDate"])) ?></td>
+            <td><?= htmlspecialchars(DateHelper::formatHour($tripItem["startHour"])) ?></td>
+            <td><?= htmlspecialchars($tripItem["arrival"]) ?></td>
+            <td><?= htmlspecialchars(DateHelper::formatDate($tripItem["endDate"])) ?></td>
+            <td><?= htmlspecialchars(DateHelper::formatHour($tripItem["endHour"])) ?></td>
+            <td><?= htmlspecialchars($tripItem["availableSeats"]) ?></td>
 
             <td>
               <button
                 type="button"
                 class="btn"
-                data-url="<?= htmlspecialchars($baseFolder . "/trips/" . $trip["idTrip"]) ?>"
+                data-url="<?= htmlspecialchars($baseFolder . "/trips/" . $tripItem["idTrip"]) ?>"
                 aria-label="Voir les détails du trajet">
                 <i class="bi bi-eye" aria-hidden="true"></i>
               </button>
-              <?php if ($trip["idUser"] === $_SESSION["user_id"]): ?>
+              <?php if ($tripItem["idUser"] === $_SESSION["user_id"]): ?>
                 <a
-                  href="<?= htmlspecialchars($baseFolder . "/trips/edit/" . $trip["idTrip"]) ?>"
+                  href="<?= htmlspecialchars($baseFolder . "/trips/edit/" . $tripItem["idTrip"]) ?>"
                   class="btn"
                   aria-label="Éditer le trajet">
                   <i class="bi bi-pencil-square" aria-hidden="true"></i>
@@ -56,8 +56,15 @@ use App\Helpers\DateHelper;
                 <button
                   type="button"
                   class="btn"
-                  data-action="<?= htmlspecialchars($baseFolder . "/trips/delete/" . $trip["idTrip"]) ?>"
-                  aria-label="Supprimer le trajet">
+                  data-action="<?= htmlspecialchars($baseFolder . "/trips/delete/" . $tripItem["idTrip"]) ?>"
+                  data-delete-trip
+                  data-departure="<?= htmlspecialchars($tripItem["departure"]) ?>"
+                  data-start-date="<?= htmlspecialchars(DateHelper::formatDate($tripItem["startDate"])) ?>"
+                  data-start-hour="<?= htmlspecialchars(DateHelper::formatHour($tripItem["startHour"])) ?>"
+                  data-arrival="<?= htmlspecialchars($tripItem["arrival"]) ?>"
+                  data-end-date="<?= htmlspecialchars(DateHelper::formatDate($tripItem["endDate"])) ?>"
+                  data-end-hour="<?= htmlspecialchars(DateHelper::formatHour($tripItem["endHour"])) ?>"
+                  aria-label=" Supprimer le trajet">
                   <i class="bi bi-trash3-fill" aria-hidden="true"></i>
                 </button>
               <?php endif; ?>
@@ -66,9 +73,9 @@ use App\Helpers\DateHelper;
         <?php endforeach; ?>
       </tbody>
     </table>
-
-    <?php require __DIR__ . "/../partials/modals/_tripDetailsModal.php"; ?>
-    <?php require __DIR__ . "/../partials/modals/_deleteTripModal.php"; ?>
-
   </div>
+
+  <?php require __DIR__ . "/../partials/modals/_tripDetailsModal.php"; ?>
+  <?php require __DIR__ . "/../partials/modals/_deleteTripModal.php"; ?>
+
 </div>

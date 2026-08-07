@@ -24,8 +24,8 @@ $resetUrl = $isEdit
   : $baseFolder . "/trips/create";
 
 $submitLabel = $isEdit
-  ? "Enregistrer"
-  : "Valider";
+  ? "Ajouter"
+  : "Modifier";
 ?>
 
 <div class="container">
@@ -233,12 +233,20 @@ $submitLabel = $isEdit
     <hr>
 
     <div class="d-flex justify-content-center gap-3">
-      <a href="<?= $baseFolder ?>/" aria-label="Annuler la création" class="btn btn-outline-dark btn-cancel">
+      <a
+        href="<?= $baseFolder ?>/"
+        aria-label="Annuler la création"
+        class="btn btn-outline-dark btn-cancel">
         <i class="bi bi-arrow-left" aria-hidden="true"></i>
       </a>
-      <a href="<?= $resetUrl ?>" aria-label="Effacer le formulaire" class="btn btn-outline-dark btn-clear">
+      
+      <a
+        href="<?= $resetUrl ?>"
+        aria-label="Effacer le formulaire"
+        class="btn btn-outline-dark btn-clear">
         <i class="bi bi-arrow-clockwise" aria-hidden="true"></i>
       </a>
+
       <button type="submit" class="btn btn-primary"><?= $submitLabel ?></button>
     </div>
 
