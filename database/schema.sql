@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `touche_pas_au_klaxon`.`agencies` (
   `idAgency` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`idAgency`),
-  UNIQUE INDEX `idAgency_UNIQUE` (`idAgency` ASC))
+  UNIQUE INDEX `name_UNIQUE` (`name` ASC))
 ENGINE = InnoDB;
 
 

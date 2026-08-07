@@ -29,12 +29,13 @@ class TripController extends AbstractController
    */
   public function show(int $id): void
   {
+    // Récupération des données du trajet.
     $tripModel = new TripModel();
-
     $trip = $tripModel->findDetailsById($id);
 
+    // Envoie les données du trajet au format JSON
+    // afin qu'elles puissent être exploitées par JavaScript.
     header("Content-Type: application/json");
-
     echo json_encode($trip);
   }
 
@@ -46,9 +47,9 @@ class TripController extends AbstractController
   {
     $this->requireAuthentication();
 
-    // Récupération des trajets
+    // Récupération des agences.
     $agencyModel = new AgencyModel();
-    $agencies = $agencyModel->getAll();
+    $agencies = $agencyModel->findAll();
 
     $this->render("trip/create.php", [
       "agencies" => $agencies,
@@ -116,7 +117,7 @@ class TripController extends AbstractController
 
     // Récupération des agences.
     $agencyModel = new AgencyModel();
-    $agencies = $agencyModel->getAll();
+    $agencies = $agencyModel->findAll();
 
     $this->render("trip/edit.php", [
       "data" => $trip,
@@ -139,7 +140,7 @@ class TripController extends AbstractController
     // Récupération des données du formulaire.
     $data = $this->getTripFormData();
 
-    // Nécessaire pour garder le formulaire en mode édition (côté vue)
+    // Conserve l'identifiant : Nécessaire pour garder le formulaire en mode édition (côté vue)
     // après une erreur de validation.
     $data["idTrip"] = $id;
 
@@ -261,7 +262,7 @@ class TripController extends AbstractController
   ): void
   {
     $agencyModel = new AgencyModel();
-    $agencies = $agencyModel->getAll();
+    $agencies = $agencyModel->findAll();
     
     $this->render($view, [
       "agencies" => $agencies,

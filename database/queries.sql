@@ -39,16 +39,27 @@ SELECT *
 FROM agencies
 WHERE idAgency = 1;
 
--- RQ06 - Créer une agence
+-- RQ06 - Vérifier l'existence d'une agence par son nom
+SELECT idAgency
+FROM agencies
+WHERE name = 'Paris';
+
+-- RQ07 - Vérifier l'unicité du nom lors d'une modification
+SELECT idAgency
+FROM agencies
+WHERE name = 'Paris'
+AND idAgency <> 1;
+
+-- RQ08 - Créer une agence
 INSERT INTO agencies (name)
 VALUES ('Lorient');
 
--- RQ07 - Modifier une agence
+-- RQ09 - Modifier une agence
 UPDATE agencies
 SET name = 'Vannes'
 WHERE idAgency = 13;
 
--- RQ08 - Supprimer une agence
+-- RQ10 - Supprimer une agence
 DELETE FROM agencies
 WHERE idAgency = 13;
 
@@ -57,7 +68,7 @@ WHERE idAgency = 13;
 -- TRIPS
 -- =====================================================
 
--- RQ09 - Créer des trajets
+-- RQ11 - Créer des trajets
 INSERT INTO trips
 (
     startDate,
@@ -83,7 +94,7 @@ VALUES
     2
 );
 
--- RQ10 - Liste des trajets (administrateur)
+-- RQ12 - Liste des trajets (administrateur)
 SELECT
     sa.name AS departure,
     t.startDate,
@@ -99,7 +110,7 @@ INNER JOIN agencies ea
     ON t.idEndAgency = ea.idAgency
 ORDER BY t.startDate, t.startHour;
 
--- RQ11 - Liste des trajets (page d'accueil)
+-- RQ13 - Liste des trajets (page d'accueil)
 SELECT
     sa.name AS departure,
 	  t.startDate,
@@ -117,21 +128,21 @@ WHERE t.availableSeats > 0
     AND TIMESTAMP(t.startDate, t.startHour) >= NOW()
 ORDER BY t.startDate, t.startHour;
 
--- RQ12 - Trajet par identifiant
+-- RQ14 - Trajet par identifiant
 SELECT *
 FROM trips
 WHERE idTrip = 1;
 
--- RQ13 - Modifier un trajet
+-- RQ15 - Modifier un trajet
 UPDATE trips
 SET availableSeats = 3
 WHERE idTrip = 1;
 
--- RQ14 - Supprimer un trajet
+-- RQ16 - Supprimer un trajet
 DELETE FROM trips
 WHERE idTrip = 1;
 
--- RQ15 - Informations complémentaires d'un trajet (modale)
+-- RQ17 - Informations complémentaires d'un trajet (modale)
 SELECT
     CONCAT(u.lastName, ' ', u.firstName) AS author,
     u.phone,

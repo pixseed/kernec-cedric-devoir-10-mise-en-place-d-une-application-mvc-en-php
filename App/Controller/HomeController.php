@@ -17,7 +17,6 @@ class HomeController extends AbstractController
   {
     // Récupération de la liste des trajets disponibles
     $tripModel = new TripModel();
-
     $trips = $tripModel->findAllAvailable();
 
     $this->render("home/index.php", [
