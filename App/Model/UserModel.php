@@ -28,6 +28,33 @@ class UserModel extends AbstractModel
   }
 
   /**
+   * Recherche un utilisateur à partir de son identifiant.
+   * ----------------------------------------------------------------------------
+   * @param int $idUser ─ Identifiant unique de l'utilisateur
+   * @return array|false ─ Tableau de données de l'utilisateur ou false s'il n'existe pas
+   */
+  public function findById(int $idUser): array|false
+  {
+    $stmt = $this->connection->prepare(
+      "SELECT
+          idUser,
+          lastName,
+          firstName,
+          email,
+          phone,
+          role
+      FROM users
+      WHERE idUser = :idUser"
+    );
+
+  $stmt->execute([
+    ":idUser" => $idUser
+  ]);
+
+  return $stmt->fetch();
+  }
+
+  /**
    * Recherche tous les utilisateurs existants.
    * ----------------------------------------------------------------------------
    * @return array ─ Tableau des utilisateurs

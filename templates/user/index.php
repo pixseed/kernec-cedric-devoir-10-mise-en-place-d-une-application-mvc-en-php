@@ -5,21 +5,22 @@
  * @var array $users
  * @var string $baseFolder
  */
+
+// Configuration dynamique du header de la page.
+$pageTitle = "Liste des utilisateurs";
+
+$pageActions = [
+  [
+    "url" => $baseFolder . "/admin",
+    "label" => "Tableau de bord",
+    "icon" => "bi-house-fill",
+    "class" => "btn-outline-dark"
+  ]
+];
 ?>
 
 <div class="container">
-  <div class="d-flex justify-content-between align-items-center">
-    <h1 class="display-6 fw-bold mb-4">Liste des utilisateurs</h1>
-
-    <a
-      href="<?= htmlspecialchars($baseFolder . "/admin") ?>"
-      class="btn btn-outline-dark d-flex align-items-center gap-2">
-
-      <i class="bi bi-house-fill fs-5" aria-hidden="true"></i>
-      
-      Tableau de bord
-    </a>
-  </div>
+  <?php require __DIR__ . "/../partials/_pageHeader.php"; ?>
 
   <div class="table-responsive border rounded">
     <table class="table table-bordered table-striped table-hover align-middle text-center mb-0">

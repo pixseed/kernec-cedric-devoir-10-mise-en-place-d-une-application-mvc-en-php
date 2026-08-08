@@ -10,16 +10,17 @@ class TripValidator
    * Valide les données du formulaire de création d'un trajet.
    * ----------------------------------------------------------------------------
    * @param array $data ─ Données du formulaire
+   * @param int $reservedSeats ─ Nombre de places réservées
    * @return array ─ Liste des erreurs de validation
    */
-  public function validate(array $data): array
+  public function validate(array $data, int $reservedSeats = 0): array
   {
     $errors = [];
 
     // Exécute l'ensemble des validations du formulaire.
     $this->validateDates($data, $errors);
     $this->validateChronology($data, $errors);
-    $this->validateSeats($data, $errors);
+    $this->validateSeats($data, $errors, $reservedSeats);
     $this->validateAgencies($data, $errors);
 
     return $errors;
@@ -84,11 +85,17 @@ class TripValidator
    * ----------------------------------------------------------------------------
    * @param array $data ─ Données du formulaire
    * @param array $errors ─ Tableau des erreurs de validation
+   * @param int $reservedSeats ─ Nombre de places réservées
    */
-  private function validateSeats(array $data, array &$errors): void
+  private function validateSeats(array $data, array &$errors, int $reservedSeats): void
   {
     if ($data["numberSeats"] < 1) {
       $errors["numberSeats"] = "Le nombre de places doit être supérieur ou égal à 1.";
+      return;
+    }
+
+    if ($data["numberSeats"] < $reservedSeats) {
+      $errors["numberSeats"] = "Le nombre de place ne peut pas être inférieur au nombre de places déjà réservées.";
     }
   }
 

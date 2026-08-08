@@ -74,9 +74,14 @@ function initDeleteTripModal() {
     return;
   }
 
+  const author = document.getElementById("delete-trip-author");
+  const email = document.getElementById("delete-trip-email");
+  const phone = document.getElementById("delete-trip-phone");
+
   const departure = document.getElementById("delete-trip-departure");
   const startDate = document.getElementById("delete-trip-start-date");
   const startHour = document.getElementById("delete-trip-start-hour");
+
   const arrival = document.getElementById("delete-trip-arrival");
   const endDate = document.getElementById("delete-trip-end-date");
   const endHour = document.getElementById("delete-trip-end-hour");
@@ -85,17 +90,27 @@ function initDeleteTripModal() {
 
   // Associe un événement à chaque bouton de suppression.
   buttons.forEach((button) => {
-    button.addEventListener("click", () => {
+    button.addEventListener("click", async () => {
       form.action = button.dataset.action;
 
       // Définit le contenu variable dans la modale.
       departure.textContent = button.dataset.departure;
       startDate.textContent = button.dataset.startDate;
       startHour.textContent = button.dataset.startHour;
-
+      
       arrival.textContent = button.dataset.arrival;
       endDate.textContent = button.dataset.endDate;
       endHour.textContent = button.dataset.endHour;
+
+      // Récupère les informations complémentaires du trajet.
+      const response = await fetch(button.dataset.detailsUrl);
+      const data = await response.json();
+
+      author.textContent = data.author;
+      email.href = `mailto:${data.email}`;
+      email.textContent = data.email;
+      phone.href = `tel:${data.phone}`;
+      phone.textContent = data.phone;
 
       modal.show();
     });
