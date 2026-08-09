@@ -3,7 +3,14 @@
 /**
  * Variables disponibles dans cette vue :
  * @var string $baseFolder
+ * @var string $role
  */
+
+$homeUrl = $baseFolder;
+
+if ($role === "admin") {
+  $homeUrl .="/admin";
+}
 ?>
 
 <div class="container">
@@ -25,7 +32,7 @@
             La page que vous recherchez n'existe pas ou n'est plus disponible.
           </p>
 
-          <a href="/" class="btn btn-primary">
+          <a href="<?= $homeUrl ?>" class="btn btn-primary">
             <i class="bi bi-house-door me-2"></i>
             Retour à l'accueil
           </a>
