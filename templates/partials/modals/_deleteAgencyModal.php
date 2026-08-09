@@ -18,7 +18,8 @@ ob_start();
 </div>
 
 <p class="mb-0">
-  <i class="bi bi-exclamation-triangle-fill"></i>&nbsp<strong>Cette action est irréversible.</strong>
+  <i class="bi bi-exclamation-triangle-fill"></i>
+  <strong>Cette action est irréversible.</strong>
 </p>
 
 <?php

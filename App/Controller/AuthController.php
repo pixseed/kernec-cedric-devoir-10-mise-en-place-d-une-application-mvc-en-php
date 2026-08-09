@@ -93,6 +93,10 @@ class AuthController extends AbstractController
       "Vous êtes connecté avec succès."
     );
 
+    if($_SESSION["role"] === "admin") {
+      $this->redirect("/admin");
+    }
+    
     $this->redirect("/");
   }
 

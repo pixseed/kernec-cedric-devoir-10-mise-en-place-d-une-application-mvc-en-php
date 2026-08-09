@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Core\AbstractController;
+use App\Model\UserModel;
 
 class UserController extends AbstractController
 {
@@ -15,6 +16,13 @@ class UserController extends AbstractController
   public function index(): void
   {
     $this->requireRole("admin");
-    $this->render("user/index.php");
+
+    // Récupération des utilisateurs triés par nom puis prénom.
+    $userModel = new UserModel();
+    $users = $userModel->findAll();
+
+    $this->render("user/index.php", [
+      "users" => $users
+    ]);
   }
 }

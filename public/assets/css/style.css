@@ -11882,6 +11882,12 @@ header .navbar-brand:hover {
   text-decoration: underline;
 }
 
+.btn-dark:hover,
+.btn-outline-dark:hover {
+  background-color: #0074c7;
+  border-color: #0074c7;
+}
+
 .btn-logout:hover,
 .btn-reset:hover,
 .btn-clear:hover {
@@ -11897,6 +11903,28 @@ header .navbar-brand:hover {
 
 .table-responsive {
   overflow: auto;
+}
+
+.dashboard-action {
+  transition: 0.2s ease;
+}
+.dashboard-action__button {
+  border-radius: 0 0 var(--bs-card-inner-border-radius) var(--bs-card-inner-border-radius);
+  transition: 0.4s ease;
+}
+.dashboard-action__icon {
+  color: #0074c7;
+  transition: 0.4s ease;
+}
+.dashboard-action:hover {
+  transform: translateY(-4px);
+}
+.dashboard-action:hover .dashboard-action__button {
+  background-color: #82b864;
+  border-color: #82b864;
+}
+.dashboard-action:hover .dashboard-action__icon {
+  color: #82b864;
 }
 
 /*# sourceMappingURL=style.css.map */

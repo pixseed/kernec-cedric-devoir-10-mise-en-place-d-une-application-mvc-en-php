@@ -7,6 +7,7 @@ namespace App\Controller;
 use App\Core\AbstractController;
 use App\Model\TripModel;
 use App\Model\AgencyModel;
+use App\Model\UserModel;
 use App\Validators\TripValidator;
 use Exception;
 
@@ -19,7 +20,14 @@ class TripController extends AbstractController
   public function index(): void
   {
     $this->requireRole("admin");
-    $this->render("trip/index.php");
+
+    // Récupération de la liste des trajets triés par date et heure et de départ.
+    $tripModel = new TripModel();
+    $trips = $tripModel->findAll();
+    
+    $this->render("trip/index.php", [
+      "trips" => $trips
+    ]);
   }
 
   /**
@@ -29,11 +37,13 @@ class TripController extends AbstractController
    */
   public function show(int $id): void
   {
+    $this->requireAuthentication();
+
     // Récupération des données du trajet.
     $tripModel = new TripModel();
     $trip = $tripModel->findDetailsById($id);
 
-    // Envoie les données du trajet au format JSON
+    // Envoie des données du trajet au format JSON
     // afin qu'elles puissent être exploitées par JavaScript.
     header("Content-Type: application/json");
     echo json_encode($trip);
@@ -47,12 +57,17 @@ class TripController extends AbstractController
   {
     $this->requireAuthentication();
 
+    // Récupération des informations de l'utilisateur connecté.
+    $userModel = new UserModel();
+    $user = $userModel->findById((int) $_SESSION["user_id"]);
+
     // Récupération des agences.
     $agencyModel = new AgencyModel();
     $agencies = $agencyModel->findAll();
 
     $this->render("trip/create.php", [
-      "agencies" => $agencies,
+      "user"      => $user,
+      "agencies"  => $agencies,
     ]);
   }
 
@@ -67,6 +82,12 @@ class TripController extends AbstractController
     // Récupération des données du formulaire.
     $data = $this->getTripFormData();
 
+    // Initialisation du nombre de places disponibles à la création du trajet.
+    $data["availableSeats"] = $data["numberSeats"];
+
+    // Récupération de l'identifiant de l'utilisateur.
+    $data["idUser"] = (int) $_SESSION["user_id"];
+
     // Validation des données.
     $tripValidator = new TripValidator();
     $errors = $tripValidator->validate($data);
@@ -76,6 +97,7 @@ class TripController extends AbstractController
       $this->renderTripForm("trip/create.php",
         $data,
         $errors,
+        (int) $_SESSION["user_id"]
       );
 
       return;
@@ -90,7 +112,7 @@ class TripController extends AbstractController
       "Le trajet a été créé avec succès."
     );
 
-    $this->redirect("/");
+    $this->redirectAfterTripAction();
   }
 
   /**
@@ -102,9 +124,9 @@ class TripController extends AbstractController
   {
     $this->requireAuthentication();
 
-    // Vérifie que le trajet appartient à l'utilisateur connecté.
+    // Vérification d'autorisation de gestion du trajet par l'utilisateur.
     try {
-      $trip = $this->getOwnedTrip($id);
+      $trip = $this->getAuthorizedTrip($id);
     } catch (Exception $e) {
       $this->setFlash(
         "danger",
@@ -115,13 +137,18 @@ class TripController extends AbstractController
       return;
     }
 
+    // Récupération des données de l'auteur du trajet.
+    $userModel = new UserModel();
+    $user = $userModel->findById((int) $trip["idUser"]);
+
     // Récupération des agences.
     $agencyModel = new AgencyModel();
     $agencies = $agencyModel->findAll();
 
     $this->render("trip/edit.php", [
-      "data" => $trip,
-      "agencies" => $agencies,
+      "user"      => $user,
+      "data"      => $trip,
+      "agencies"  => $agencies,
     ]);
   }
 
@@ -134,29 +161,36 @@ class TripController extends AbstractController
   {
     $this->requireAuthentication();
 
-    // Vérifie que le trajet appartient à l'utilisateur connecté.
-    $this->getOwnedTrip($id);
+    // Vérification d'autorisation de gestion du trajet par l'utilisateur.
+    $trip = $this->getAuthorizedTrip($id);
 
     // Récupération des données du formulaire.
     $data = $this->getTripFormData();
 
-    // Conserve l'identifiant : Nécessaire pour garder le formulaire en mode édition (côté vue)
-    // après une erreur de validation.
+    // Détermination du nombre de places déjà réservées.
+    $reservedSeats = $trip["numberSeats"] - $trip["availableSeats"];
+
+    // Conservation de l'identifiant : Nécessaire pour garder le formulaire
+    // en mode édition (côté vue) après une erreur de validation.
     $data["idTrip"] = $id;
 
     // Validation des données.
     $tripValidator = new TripValidator();
-    $errors = $tripValidator->validate($data);
+    $errors = $tripValidator->validate($data, $reservedSeats);
 
     // Si des erreurs existent, réaffichage du formulaire avec les erreurs.
     if (!empty($errors)) {
       $this->renderTripForm("trip/edit.php",
         $data,
         $errors,
+        (int) $trip["idUser"]
       );
 
       return;
     }
+
+    // Détermination du nouveau nombre de places disponibles.
+    $data["availableSeats"] = $data["numberSeats"] - $reservedSeats;
 
     // Mise à jour des données dans la base.
     $tripModel = new TripModel();
@@ -167,7 +201,7 @@ class TripController extends AbstractController
       "Le trajet a été modifié avec succès."
     );
 
-    $this->redirect("/");
+    $this->redirectAfterTripAction();
   }
 
   /**
@@ -179,9 +213,9 @@ class TripController extends AbstractController
   {
     $this->requireAuthentication();
 
-    // Vérifie que le trajet appartient à l'utilisateur connecté.
+    // Vérification d'autorisation de gestion du trajet par l'utilisateur.
     try {
-      $this->getOwnedTrip($id);
+      $this->getAuthorizedTrip($id);
     } catch (Exception $e) {
       $this->setFlash(
         "danger",
@@ -201,16 +235,16 @@ class TripController extends AbstractController
       "Le trajet a été supprimé avec succès."
     );
 
-    $this->redirect("/");
+    $this->redirectAfterTripAction();
   }
 
   /**
-   * Récupère un trajet appartenant à l'utilisateur connecté.
+   * Vérifie que le trajet peut être géré par l'utilisateur.
    * ----------------------------------------------------------------------------
    * @param int $id ─ Identifiant unique du trajet
    * @return array ─ Données du trajet
    */
-  private function getOwnedTrip(int $id): array
+  private function getAuthorizedTrip(int $id): array
   {
     // Récupération du trajet.
     $tripModel = new TripModel();
@@ -221,8 +255,11 @@ class TripController extends AbstractController
       throw new Exception("Le trajet demandé est introuvable.");
     }
 
-    // Vérifier que le trajet appartient à l'utilisateur connecté.
-    if ($trip["idUser"] !== $_SESSION["user_id"]) {
+    // Vérification que l'utilisateur peut gérer le trajet.
+    $isOwner = $trip["idUser"] === $_SESSION["user_id"];
+    $isAdmin = $_SESSION["role"] === "admin";
+
+    if (!$isOwner && !$isAdmin) {
       throw new Exception("Vous n'êtes pas autorisé à modifier ce trajet.");
     }
 
@@ -243,8 +280,6 @@ class TripController extends AbstractController
       "endHour"         => trim($_POST["endHour"] ?? ""),
       "idEndAgency"     => (int) ($_POST["idEndAgency"] ?? 0),
       "numberSeats"     => (int) ($_POST["numberSeats"] ?? 0),
-      "availableSeats"  => (int) ($_POST["numberSeats"] ?? 0),
-      "idUser"          => (int) ($_SESSION["user_id"])
     ];
   }
 
@@ -254,20 +289,39 @@ class TripController extends AbstractController
    * @param string $view ─ Url de la vue à afficher
    * @param array $data ─ Tableau des données à afficher
    * @param array $errors ─ Tableau des erreurs à retourner
+   * @param int $userId ─ Identifiant unique de l'utilisateur
    */
   private function renderTripForm(
     string $view,
     array $data,
-    array $errors
+    array $errors,
+    int $userId
   ): void
   {
     $agencyModel = new AgencyModel();
     $agencies = $agencyModel->findAll();
+
+    $userModel = new UserModel();
+    $user = $userModel->findById($userId);
     
     $this->render($view, [
-      "agencies" => $agencies,
-      "data" => $data,
-      "errors" => $errors,
+      "user"      => $user,
+      "agencies"  => $agencies,
+      "data"      => $data,
+      "errors"    => $errors,
     ]);
+  }
+
+  /**
+   * Redirige après une action vers une page en fonction du rôle de l'utilisateur.
+   * ----------------------------------------------------------------------------
+   */
+  private function redirectAfterTripAction(): void
+  {
+    if ($_SESSION["role"] === "admin") {
+      $this->redirect("/trips");
+    }
+
+    $this->redirect("/");
   }
 }

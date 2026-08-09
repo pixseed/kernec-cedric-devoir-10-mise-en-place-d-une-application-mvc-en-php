@@ -11,6 +11,32 @@ ob_start();
   Êtes-vous sûr de vouloir <strong>supprimer</strong> ce trajet ?
 </p>
 
+<?php if ($_SESSION["role"] === "admin"): ?>
+  <div>
+    <div class="border rounded p-3 bg-body-tertiary mb-3">
+      <div class="small text-muted mb-2">
+        Auteur
+      </div>
+
+      <div class="fw-bold mb-2">
+        <i class="bi bi-person-fill me-1" aria-hidden="true"></i>
+        <span id="delete-trip-author"></span>
+      </div>
+
+      <div class="mb-2">
+        <i class="bi bi-envelope-fill me-1" aria-hidden="true"></i>
+        <a id="delete-trip-email"></a>
+      </div>
+
+      <div class="mb-2">
+        <i class="bi bi-telephone-fill me-1" aria-hidden="true"></i>
+        <a id="delete-trip-phone"></a>
+      </div>
+
+    </div>
+  </div>
+<?php endif; ?>
+
 <div class="d-flex align-items-center gap-3 mb-3">
 
   <div class="flex-fill">
@@ -77,7 +103,7 @@ ob_start();
 
 </div>
 
-<p class="mb-0">
+<p class="alert alert-warning mb-0">
   <i class="bi bi-exclamation-triangle-fill" aria-hidden="true"></i>
   <strong>Cette action est irréversible.</strong>
 </p>

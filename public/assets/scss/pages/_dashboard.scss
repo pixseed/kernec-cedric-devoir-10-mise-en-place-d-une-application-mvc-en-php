@@ -1,0 +1,28 @@
+@use "../abstracts/variables" as variables;
+
+.dashboard-action {
+    transition: .2s ease;
+
+    &__button {
+        border-radius: 0 0 var(--bs-card-inner-border-radius) var(--bs-card-inner-border-radius);
+        transition: .4s ease;
+    }
+
+    &__icon {
+        color: variables.$primary;
+        transition: .4s ease;
+    }
+
+    &:hover {
+        transform: translateY(-4px);
+
+        .dashboard-action__button {
+            background-color: variables.$success;
+            border-color: variables.$success;
+        }
+
+        .dashboard-action__icon {
+            color: variables.$success; 
+        }
+    }
+}

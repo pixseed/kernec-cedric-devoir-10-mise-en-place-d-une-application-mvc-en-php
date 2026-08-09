@@ -21,7 +21,6 @@
           <?php endif; ?>
         </div>
 
-
         <div class="mb-3">
           <label for="password" class="form-label">Mot de passe</label>
           <input
@@ -37,7 +36,6 @@
               </div>
             <?php endif; ?>
         </div>
-
 
         <?php if (isset($errors["auth"])): ?>
           <div class="alert alert-danger">

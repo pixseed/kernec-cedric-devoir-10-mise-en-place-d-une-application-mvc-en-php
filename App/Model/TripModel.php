@@ -8,8 +8,50 @@ use App\Core\AbstractModel;
 
 class TripModel extends AbstractModel {
   /**
+   * Recherche tous les trajets.
+   * ----------------------------------------------------------------------------
+   * @return array ─ Tableau des trajets
+   */
+  public function findAll(): array
+  {
+    $stmt = $this->connection->prepare(
+      "SELECT
+          t.idTrip,
+          t.idUser,
+          sa.name AS departure,
+          t.startDate,
+          t.startHour,
+          ea.name AS arrival,
+          t.endDate,
+          t.endHour,
+          t.availableSeats,
+          t.numberSeats,
+          CASE
+              WHEN TIMESTAMP(t.startDate, t.startHour) > NOW()
+                  THEN 'upcoming'
+              WHEN TIMESTAMP(t.endDate, t.endHour) < NOW()
+                  THEN 'finished'
+              ELSE 'ongoing'
+          END AS status
+      FROM trips t
+      INNER JOIN agencies sa
+          ON t.idStartAgency = sa.idAgency
+      INNER JOIN agencies ea
+          ON t.idEndAgency = ea.idAgency
+      ORDER BY t.startDate, t.startHour"
+    );
+
+    $stmt->execute();
+
+    $trips = $stmt->fetchAll();
+
+    return $trips;
+  }
+
+  /**
    * Recherche tous les trajets disponibles à venir.
    * ----------------------------------------------------------------------------
+   * @return array ─ Tableau des trajets disponibles
    */
   public function findAllAvailable(): array
   {
@@ -23,7 +65,8 @@ class TripModel extends AbstractModel {
           ea.name AS arrival,
           t.endDate,
           t.endHour,
-          t.availableSeats
+          t.availableSeats,
+          t.numberSeats
       FROM trips t
       INNER JOIN agencies sa
           ON t.idStartAgency = sa.idAgency
@@ -80,16 +123,16 @@ class TripModel extends AbstractModel {
   {
     $stmt = $this->connection->prepare(
       "SELECT
-        idTrip,
-        startDate,
-        startHour,
-        endDate,
-        endHour,
-        numberSeats,
-        availableSeats,
-        idUser,
-        idStartAgency,
-        idEndAgency
+          idTrip,
+          startDate,
+          startHour,
+          endDate,
+          endHour,
+          numberSeats,
+          availableSeats,
+          idUser,
+          idStartAgency,
+          idEndAgency
       FROM trips
       WHERE idTrip = :idTrip"
     );
@@ -102,7 +145,7 @@ class TripModel extends AbstractModel {
   }
 
   /**
-   * Insert les données de création de trajet dans la base.
+   * Insert les données d'un nouveau trajet dans la base.
    * ----------------------------------------------------------------------------
    * @param array $data ─ Tableau des données à insérer dans la base
    * @return bool ─ True si le trajet a été créé avec succès, sinon false
@@ -149,7 +192,7 @@ class TripModel extends AbstractModel {
   }
 
   /**
-   * Met à jour les données du trajet dans la base.
+   * Met à jour les données d'un trajet dans la base.
    * ----------------------------------------------------------------------------
    * @param int $idTrip ─ Identifiant unique du trajet modifié
    * @param array $data ─ Données à mettre à jour
@@ -160,14 +203,14 @@ class TripModel extends AbstractModel {
     $stmt = $this->connection->prepare(
       "UPDATE trips
       SET
-        startDate = :startDate,
-        startHour = :startHour,
-        endDate = :endDate,
-        endHour = :endHour,
-        numberSeats = :numberSeats,
-        availableSeats = :availableSeats,
-        idStartAgency = :idStartAgency,
-        idEndAgency = :idEndAgency
+          startDate = :startDate,
+          startHour = :startHour,
+          endDate = :endDate,
+          endHour = :endHour,
+          numberSeats = :numberSeats,
+          availableSeats = :availableSeats,
+          idStartAgency = :idStartAgency,
+          idEndAgency = :idEndAgency
       WHERE idTrip = :idTrip"
     );
 
@@ -177,7 +220,7 @@ class TripModel extends AbstractModel {
       ":endDate"        => $data["endDate"],
       ":endHour"        => $data["endHour"],
       ":numberSeats"    => $data["numberSeats"],
-      ":availableSeats" => $data["numberSeats"],
+      ":availableSeats" => $data["availableSeats"],
       ":idStartAgency"  => $data["idStartAgency"],
       ":idEndAgency"    => $data["idEndAgency"],
       ":idTrip"         => $idTrip,
@@ -187,6 +230,8 @@ class TripModel extends AbstractModel {
   /**
    * Supprime un trajet dans la base.
    * ----------------------------------------------------------------------------
+   * @param int $idTrip ─ Identifiant unique du trajet à supprimer
+   * @return bool ─ True si la suppression a été exécutée avec succès, sinon false
    */
   public function delete(int $idTrip): bool
   {
@@ -198,5 +243,23 @@ class TripModel extends AbstractModel {
     return $stmt->execute([
       ":idTrip" => $idTrip
     ]);
+  }
+
+  /**
+   * Compte le nombre total de trajets existants.
+   * ----------------------------------------------------------------------------
+   * @return int ─ Nombre de trajets
+   */
+  public function countAll(): int
+  {
+    $stmt = $this->connection->prepare(
+      "SELECT COUNT(*) AS total FROM trips"
+    );
+
+    $stmt->execute();
+
+    $result = $stmt->fetch();
+
+    return (int) $result["total"];
   }
 }

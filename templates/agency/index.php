@@ -5,10 +5,22 @@
  * @var array $agencies
  * @var string $baseFolder
  */
+
+// Configuration dynamique du header de la page.
+$pageTitle = "Liste des utilisateurs";
+
+$pageActions = [
+  [
+    "url" => $baseFolder . "/admin",
+    "label" => "Tableau de bord",
+    "icon" => "bi-house-fill",
+    "class" => "btn-outline-dark"
+  ]
+];
 ?>
 
 <div class="container">
-  <h1 class="display-6 fw-bold mb-4">Liste des agences</h1>
+  <?php require __DIR__ . "/../partials/_pageHeader.php"; ?>
 
   <div class="row">
     <div class="col-6">

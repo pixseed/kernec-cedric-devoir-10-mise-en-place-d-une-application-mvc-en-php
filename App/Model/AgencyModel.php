@@ -37,8 +37,8 @@ class AgencyModel extends AbstractModel {
   {
     $stmt = $this->connection->prepare(
       "SELECT
-        idAgency,
-        name
+          idAgency,
+          name
       FROM agencies
       WHERE idAgency = :idAgency"
     );
@@ -140,5 +140,23 @@ class AgencyModel extends AbstractModel {
 
     // Retourne true si une agence correspondant aux critères existe.
     return (bool) $stmt->fetch();
+  }
+
+  /**
+   * Compte le nombre total d'agences existantes.
+   * ----------------------------------------------------------------------------
+   * @return int ─ Nombre d'agences
+   */
+  public function countAll(): int
+  {
+    $stmt = $this->connection->prepare(
+      "SELECT COUNT(*) AS total FROM agencies"
+    );
+
+    $stmt->execute();
+
+    $result = $stmt->fetch();
+
+    return (int) $result["total"];
   }
 }
