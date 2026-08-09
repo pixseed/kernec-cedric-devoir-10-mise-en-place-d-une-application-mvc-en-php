@@ -22,8 +22,9 @@
 @use "components/tables";
 
 // Pages
+@use "pages/agency";
+@use "pages/dashboard";
 @use "pages/home";
 @use "pages/login";
 @use "pages/trip";
-@use "pages/agency";
 @use "pages/user";

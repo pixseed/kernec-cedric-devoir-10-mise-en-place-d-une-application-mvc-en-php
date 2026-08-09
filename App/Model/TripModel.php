@@ -244,4 +244,22 @@ class TripModel extends AbstractModel {
       ":idTrip" => $idTrip
     ]);
   }
+
+  /**
+   * Compte le nombre total de trajets existants.
+   * ----------------------------------------------------------------------------
+   * @return int ─ Nombre de trajets
+   */
+  public function countAll(): int
+  {
+    $stmt = $this->connection->prepare(
+      "SELECT COUNT(*) AS total FROM trips"
+    );
+
+    $stmt->execute();
+
+    $result = $stmt->fetch();
+
+    return (int) $result["total"];
+  }
 }

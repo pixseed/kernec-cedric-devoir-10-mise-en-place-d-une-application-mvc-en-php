@@ -79,4 +79,22 @@ class UserModel extends AbstractModel
 
     return $users;
   }
+
+  /**
+   * Compte le nombre total d'utilisateurs existants.
+   * ----------------------------------------------------------------------------
+   * @return int ─ Nombre d'utilisateurs
+   */
+  public function countAll(): int
+  {
+    $stmt = $this->connection->prepare(
+      "SELECT COUNT(*) AS total FROM users"
+    );
+
+    $stmt->execute();
+
+    $result = $stmt->fetch();
+
+    return (int) $result["total"];
+  }
 }

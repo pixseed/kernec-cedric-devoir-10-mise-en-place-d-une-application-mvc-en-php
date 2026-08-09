@@ -3,6 +3,9 @@
 // Accueil
 $router->get("/", "HomeController@index");
 
+// Admin
+$router->get("/admin", "AdminController@index");
+
 // Authentification
 $router->get("/login", "AuthController@index");
 $router->post("/login", "AuthController@login");
