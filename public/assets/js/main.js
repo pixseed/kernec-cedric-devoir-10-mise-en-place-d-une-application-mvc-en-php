@@ -1,6 +1,6 @@
 /**
  * Initialise la fermeture automatique des messages flash.
- * ---------------------------------------------------------------------------- 
+ * ----------------------------------------------------------------------------
  */
 function initFlash() {
   const flashMessage = document.getElementById("flash-message");
@@ -25,7 +25,7 @@ function initFlash() {
 
 /**
  * Initialise la modale affichant les détails d'un trajet.
- * ---------------------------------------------------------------------------- 
+ * ----------------------------------------------------------------------------
  */
 function initTripModal() {
   const buttons = document.querySelectorAll("[data-url]");
@@ -35,29 +35,44 @@ function initTripModal() {
     return;
   }
 
+  const author = document.getElementById("trip-author");
+  const phone = document.getElementById("trip-phone");
+  const email = document.getElementById("trip-email");
+  const numberSeats = document.getElementById("trip-number-seats");
+
   const modal = new bootstrap.Modal(modalElement);
 
   // Associe un événement à chaque bouton de suppression.
   buttons.forEach((button) => {
-    button.addEventListener("click", () => {
-      // Récupère les données du trajet puis met à jour la modale.
-      fetch(button.dataset.url)
-        .then((response) => response.json())
-        .then((trip) => {
-          document.getElementById("tripAuthor").textContent = trip.author;
-          document.getElementById("tripPhone").textContent = trip.phone;
-          document.getElementById("tripEmail").textContent = trip.email;
-          document.getElementById("tripNumberSeats").textContent =
-            trip.numberSeats;
+    button.addEventListener("click", async () => {
+      try {
+        // Récupère les données du trajet.
+        const response = await fetch(button.dataset.url);
 
-          modal.show();
-        })
-        .catch((error) => {
-          console.error(
-            "Erreur lors de la récupération des détails du trajet :",
-            error,
-          );
-        });
+        if (!response.ok) {
+          throw new Error(`Erreur HTTP : ${response.status}`);
+        }
+
+        const trip = await response.json();
+
+        // Met à jour le contenu de la modale.
+        author.textContent = trip.author;
+
+        phone.href = `tel:${trip.phone}`;
+        phone.textContent = trip.phone;
+
+        email.href = `mailto:${trip.email}`;
+        email.textContent = trip.email;
+
+        numberSeats.textContent = trip.numberSeats;
+
+        modal.show();
+      } catch (error) {
+        console.error(
+          "Erreur lors de la récupération des détails du trajet :",
+          error,
+        );
+      }
     });
   });
 }
@@ -97,22 +112,38 @@ function initDeleteTripModal() {
       departure.textContent = button.dataset.departure;
       startDate.textContent = button.dataset.startDate;
       startHour.textContent = button.dataset.startHour;
-      
+
       arrival.textContent = button.dataset.arrival;
       endDate.textContent = button.dataset.endDate;
       endHour.textContent = button.dataset.endHour;
 
-      // Récupère les informations complémentaires du trajet.
-      const response = await fetch(button.dataset.detailsUrl);
-      const data = await response.json();
+      try {
+        // Récupère les informations complémentaires du trajet.
+        if (author && email && phone) {
+          const response = await fetch(button.dataset.detailsUrl);
 
-      author.textContent = data.author;
-      email.href = `mailto:${data.email}`;
-      email.textContent = data.email;
-      phone.href = `tel:${data.phone}`;
-      phone.textContent = data.phone;
+          if (!response.ok) {
+            throw new Error(`Erreur HTTP : ${response.status}`);
+          }
 
-      modal.show();
+          const data = await response.json();
+
+          author.textContent = data.author;
+
+          email.href = `mailto:${data.email}`;
+          email.textContent = data.email;
+
+          phone.href = `tel:${data.phone}`;
+          phone.textContent = data.phone;
+        }
+
+        modal.show();
+      } catch (error) {
+        console.error(
+          "Erreur lors de la récupération des détails du trajet :",
+          error,
+        );
+      }
     });
   });
 }

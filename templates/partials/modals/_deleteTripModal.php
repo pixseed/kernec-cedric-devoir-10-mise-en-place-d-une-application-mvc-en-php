@@ -11,29 +11,31 @@ ob_start();
   Êtes-vous sûr de vouloir <strong>supprimer</strong> ce trajet ?
 </p>
 
-<div>
-  <div class="border rounded p-3 bg-body-tertiary mb-3">
-    <div class="small text-muted mb-2">
-      Auteur
-    </div>
+<?php if ($_SESSION["role"] === "admin"): ?>
+  <div>
+    <div class="border rounded p-3 bg-body-tertiary mb-3">
+      <div class="small text-muted mb-2">
+        Auteur
+      </div>
 
-    <div class="fw-bold mb-2">
-      <i class="bi bi-person-fill me-1" aria-hidden="true"></i>
-      <span id="delete-trip-author"></span>
-    </div>
+      <div class="fw-bold mb-2">
+        <i class="bi bi-person-fill me-1" aria-hidden="true"></i>
+        <span id="delete-trip-author"></span>
+      </div>
 
-    <div class="mb-2">
-      <i class="bi bi-envelope-fill me-1" aria-hidden="true"></i>
-      <a id="delete-trip-email"></a>
-    </div>
+      <div class="mb-2">
+        <i class="bi bi-envelope-fill me-1" aria-hidden="true"></i>
+        <a id="delete-trip-email"></a>
+      </div>
 
-    <div class="mb-2">
-      <i class="bi bi-telephone-fill me-1" aria-hidden="true"></i>
-      <a id="delete-trip-phone"></a>
-    </div>
+      <div class="mb-2">
+        <i class="bi bi-telephone-fill me-1" aria-hidden="true"></i>
+        <a id="delete-trip-phone"></a>
+      </div>
 
+    </div>
   </div>
-</div>
+<?php endif; ?>
 
 <div class="d-flex align-items-center gap-3 mb-3">
 

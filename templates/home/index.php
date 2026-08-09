@@ -77,6 +77,7 @@ $pageActions = [];
                     type="button"
                     class="btn"
                     data-action="<?= htmlspecialchars($baseFolder . "/trips/delete/" . $tripItem["idTrip"]) ?>"
+                    data-details-url="<?= htmlspecialchars($baseFolder . "/trips/" . $tripItem["idTrip"]) ?>"
                     data-delete-trip
                     data-departure="<?= htmlspecialchars($tripItem["departure"]) ?>"
                     data-start-date="<?= htmlspecialchars(DateHelper::formatDate($tripItem["startDate"])) ?>"

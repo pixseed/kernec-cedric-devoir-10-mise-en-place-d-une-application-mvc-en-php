@@ -9,16 +9,20 @@ ob_start();
 
 <dl class="row mb-0">
   <dt class="col-sm-4">Auteur</dt>
-  <dd class="col-sm-8" id="tripAuthor"></dd>
+  <dd class="col-sm-8" id="trip-author"></dd>
 
   <dt class="col-sm-4">Téléphone</dt>
-  <dd class="col-sm-8" id="tripPhone"></dd>
+  <dd class="col-sm-8">
+    <a id="trip-phone"></a>
+  </dd>
 
   <dt class="col-sm-4">Email</dt>
-  <dd class="col-sm-8" id="tripEmail"></dd>
+  <dd class="col-sm-8">
+    <a id="trip-email"></a>
+  </dd>
 
   <dt class="col-sm-4">Nombre total de places</dt>
-  <dd class="col-sm-8" id="tripNumberSeats"></dd>
+  <dd class="col-sm-8" id="trip-number-seats"></dd>
 </dl>
 
 <?php
