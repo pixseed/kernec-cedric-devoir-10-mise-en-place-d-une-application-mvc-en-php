@@ -14,6 +14,10 @@ class ErrorController extends AbstractController
    */
   public function notFound(): void
   {
-    $this->render("errors/404.php");
+    http_response_code(404);
+
+    $this->render("errors/404.php", [
+      "mainClass" => "d-flex justify-content-center align-items-center",
+    ]);
   }
 }

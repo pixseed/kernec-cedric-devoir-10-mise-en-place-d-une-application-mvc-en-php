@@ -1,5 +1,7 @@
 <?php
 
+use App\Controller\ErrorController;
+
 // Accueil
 $router->get("/", "HomeController@index");
 
@@ -32,3 +34,9 @@ $router->post("/agencies/delete/:id", "AgencyController@delete");
 
 // Utilisateurs
 $router->get("/users", "UserController@index");
+
+// Erreurs
+$router->notFound(function() {
+  $controller = new ErrorController();
+  $controller->notFound();
+});
