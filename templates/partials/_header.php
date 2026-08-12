@@ -25,7 +25,7 @@
 
       </button>
 
-      <div class="collapse navbar-collapse" id="mainNavbar">
+      <div class="collapse navbar-collapse pt-3 pt-lg-0" id="mainNavbar">
         <ul class="navbar-nav ms-auto gap-2 align-items-lg-center">
           <?php if (!$isAuthenticated): ?>
             <?php require __DIR__ . "/header/_guest_menu.php" ?>
