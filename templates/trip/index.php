@@ -16,13 +16,15 @@ $pageActions = [
     "url" => $baseFolder . "/trips/create",
     "label" => "Créer un trajet",
     "icon" => "bi-plus",
-    "class" => "btn-dark"
+    "class" => "btn-dark",
+    "order" => "order-2 order-sm-1"
   ],
   [
     "url" => $baseFolder . "/admin",
     "label" => "Tableau de bord",
     "icon" => "bi-house-fill",
-    "class" => "btn-outline-dark"
+    "class" => "btn-outline-dark",
+    "order" => "order-1 order-sm-2"
   ]
 ];
 ?>

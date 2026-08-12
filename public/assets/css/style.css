@@ -11889,7 +11889,7 @@ main {
   min-height: 0;
 }
 
-@media (min-width: 992px) {
+@media (min-width: 992px) and (min-height: 396px) {
   .app-body--fixed {
     height: 100vh;
     overflow: hidden;
