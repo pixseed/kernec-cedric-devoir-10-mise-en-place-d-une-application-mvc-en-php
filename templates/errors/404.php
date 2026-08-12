@@ -17,7 +17,7 @@ if ($role === "admin") {
   <div class="row justify-content-center">
     <div class="col-12 col-md-10 col-lg-6">
 
-      <div class="card shadow-sm">
+      <div class="card shadow-sm bg-white">
         <div class="card-body text-center p-5">
 
           <div class="display-1 fw-bold lh-1">
