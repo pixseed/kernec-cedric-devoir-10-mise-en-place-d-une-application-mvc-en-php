@@ -2,6 +2,12 @@ html {
     scroll-behavior: smooth;
 }
 
+.app-top {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
 .app-body {
     min-height: 100vh;
 }

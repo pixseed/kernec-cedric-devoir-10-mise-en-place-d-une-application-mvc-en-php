@@ -21,9 +21,11 @@
 
 <body class="app-body d-flex flex-column <?= $bodyClass ?? '' ?>">
 
-  <?php require __DIR__ . "/../partials/_header.php"; ?>
+  <div class="app-top">
+    <?php require __DIR__ . "/../partials/_header.php"; ?>
 
-  <?php require __DIR__ . "/../partials/_flash.php"; ?>
+    <?php require __DIR__ . "/../partials/_flash.php"; ?>
+  </div>
 
   <main class="app-main flex-grow-1 <?= $mainClass ?? '' ?>">
     <?php require __DIR__ . "/../" . $view; ?>

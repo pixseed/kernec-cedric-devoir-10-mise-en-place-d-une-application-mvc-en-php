@@ -7,7 +7,7 @@
  */
 ?>
 
-<header class="header">
+<header class="header bg-white">
   <nav class="navbar navbar-expand-lg py-3 shadow-sm">
     <div class="container">
       <?php require __DIR__ . "/header/_logo.php"; ?>

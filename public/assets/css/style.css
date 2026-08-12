@@ -11863,6 +11863,12 @@ html {
   scroll-behavior: smooth;
 }
 
+.app-top {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
 .app-body {
   min-height: 100vh;
 }
@@ -11947,6 +11953,10 @@ table thead th {
   position: sticky;
   top: 0;
   z-index: 1;
+}
+
+.flash-wrapper {
+  backdrop-filter: blur(4px);
 }
 
 .dashboard-action {
