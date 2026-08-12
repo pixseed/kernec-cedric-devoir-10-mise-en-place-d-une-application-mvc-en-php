@@ -39,21 +39,23 @@ $pageActions = [
               <tr>
                 <td><?= htmlspecialchars($agencyItem["name"]) ?></td>
                 <td>
-                  <a
-                    href="<?= htmlspecialchars($baseFolder . "/agencies/edit/" . $agencyItem["idAgency"]) ?>"
-                    class="btn"
-                    aria-label="Éditer l'agence">
-                    <i class="bi bi-pencil-square" aria-hidden="true"></i>
-                  </a>
-                  <button
-                    type="button"
-                    class="btn"
-                    data-delete-agency
-                    data-action="<?= htmlspecialchars($baseFolder . "/agencies/delete/" . $agencyItem["idAgency"]) ?>"
-                    data-name="<?= htmlspecialchars($agencyItem["name"]) ?>"
-                    aria-label="Supprimer l'agence">
-                    <i class="bi bi-trash3-fill" aria-hidden="true"></i>
-                  </button>
+                  <div class="d-flex flex-nowrap justify-content-center">
+                    <a
+                      href="<?= htmlspecialchars($baseFolder . "/agencies/edit/" . $agencyItem["idAgency"]) ?>"
+                      class="btn"
+                      aria-label="Éditer l'agence">
+                      <i class="bi bi-pencil-square" aria-hidden="true"></i>
+                    </a>
+                    <button
+                      type="button"
+                      class="btn"
+                      data-delete-agency
+                      data-action="<?= htmlspecialchars($baseFolder . "/agencies/delete/" . $agencyItem["idAgency"]) ?>"
+                      data-name="<?= htmlspecialchars($agencyItem["name"]) ?>"
+                      aria-label="Supprimer l'agence">
+                      <i class="bi bi-trash3-fill" aria-hidden="true"></i>
+                    </button>
+                  </div>
                 </td>
               </tr>
             <?php endforeach; ?>
@@ -65,7 +67,7 @@ $pageActions = [
 
     <div class="col-12 col-lg-6 d-flex flex-column order-1 order-lg-2">
       <div class="scrollable-content">
-      <?php require __DIR__ . "/_form.php"; ?>
+        <?php require __DIR__ . "/_form.php"; ?>
       </div>
     </div>
 

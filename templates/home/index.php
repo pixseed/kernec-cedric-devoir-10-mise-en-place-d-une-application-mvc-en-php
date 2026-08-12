@@ -57,38 +57,40 @@ $pageActions = [];
 
             <?php if (isset($_SESSION["user_id"])): ?>
               <td>
-                <button
-                  type="button"
-                  class="btn"
-                  data-url="<?= htmlspecialchars($baseFolder . "/trips/" . $tripItem["idTrip"]) ?>"
-                  aria-label="Voir les détails du trajet">
-                  <i class="bi bi-eye" aria-hidden="true"></i>
-                </button>
-
-                <?php if (isset($_SESSION["user_id"]) && $tripItem["idUser"] === $_SESSION["user_id"]): ?>
-                  <a
-                    href="<?= htmlspecialchars($baseFolder . "/trips/edit/" . $tripItem["idTrip"]) ?>"
-                    class="btn"
-                    aria-label="Éditer le trajet">
-                    <i class="bi bi-pencil-square" aria-hidden="true"></i>
-                  </a>
-
+                <div class="d-flex flex-nowrap justify-content-center">
                   <button
                     type="button"
                     class="btn"
-                    data-action="<?= htmlspecialchars($baseFolder . "/trips/delete/" . $tripItem["idTrip"]) ?>"
-                    data-details-url="<?= htmlspecialchars($baseFolder . "/trips/" . $tripItem["idTrip"]) ?>"
-                    data-delete-trip
-                    data-departure="<?= htmlspecialchars($tripItem["departure"]) ?>"
-                    data-start-date="<?= htmlspecialchars(DateHelper::formatDate($tripItem["startDate"])) ?>"
-                    data-start-hour="<?= htmlspecialchars(DateHelper::formatHour($tripItem["startHour"])) ?>"
-                    data-arrival="<?= htmlspecialchars($tripItem["arrival"]) ?>"
-                    data-end-date="<?= htmlspecialchars(DateHelper::formatDate($tripItem["endDate"])) ?>"
-                    data-end-hour="<?= htmlspecialchars(DateHelper::formatHour($tripItem["endHour"])) ?>"
-                    aria-label=" Supprimer le trajet">
-                    <i class="bi bi-trash3-fill" aria-hidden="true"></i>
+                    data-url="<?= htmlspecialchars($baseFolder . "/trips/" . $tripItem["idTrip"]) ?>"
+                    aria-label="Voir les détails du trajet">
+                    <i class="bi bi-eye" aria-hidden="true"></i>
                   </button>
-                <?php endif; ?>
+
+                  <?php if (isset($_SESSION["user_id"]) && $tripItem["idUser"] === $_SESSION["user_id"]): ?>
+                    <a
+                      href="<?= htmlspecialchars($baseFolder . "/trips/edit/" . $tripItem["idTrip"]) ?>"
+                      class="btn"
+                      aria-label="Éditer le trajet">
+                      <i class="bi bi-pencil-square" aria-hidden="true"></i>
+                    </a>
+
+                    <button
+                      type="button"
+                      class="btn"
+                      data-action="<?= htmlspecialchars($baseFolder . "/trips/delete/" . $tripItem["idTrip"]) ?>"
+                      data-details-url="<?= htmlspecialchars($baseFolder . "/trips/" . $tripItem["idTrip"]) ?>"
+                      data-delete-trip
+                      data-departure="<?= htmlspecialchars($tripItem["departure"]) ?>"
+                      data-start-date="<?= htmlspecialchars(DateHelper::formatDate($tripItem["startDate"])) ?>"
+                      data-start-hour="<?= htmlspecialchars(DateHelper::formatHour($tripItem["startHour"])) ?>"
+                      data-arrival="<?= htmlspecialchars($tripItem["arrival"]) ?>"
+                      data-end-date="<?= htmlspecialchars(DateHelper::formatDate($tripItem["endDate"])) ?>"
+                      data-end-hour="<?= htmlspecialchars(DateHelper::formatHour($tripItem["endHour"])) ?>"
+                      aria-label=" Supprimer le trajet">
+                      <i class="bi bi-trash3-fill" aria-hidden="true"></i>
+                    </button>
+                  <?php endif; ?>
+                </div>
               </td>
             <?php endif; ?>
           </tr>
