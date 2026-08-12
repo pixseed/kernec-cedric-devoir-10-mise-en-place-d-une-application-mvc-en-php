@@ -27,7 +27,7 @@ $pageActions = [];
     </p>
   <?php endif; ?>
 
-  <div class="scrollable-content table-responsive flex-grow-1 border rounded">
+  <div class="scrollable-content table-responsive flex-grow-1 border rounded bg-white">
     <table class="table table-bordered table-striped table-hover align-middle text-center mb-0">
       <thead class="table-dark">
         <tr>
@@ -39,7 +39,9 @@ $pageActions = [];
           <th>Heure</th>
           <th>Places</th>
           <?php if (isset($_SESSION["user_id"])): ?>
-            <th></th>
+            <th>
+              <span class="visually-hidden">Actions</span>
+            </th>
           <?php endif; ?>
         </tr>
       </thead>

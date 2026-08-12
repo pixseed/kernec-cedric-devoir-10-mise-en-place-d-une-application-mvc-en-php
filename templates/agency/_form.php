@@ -10,7 +10,7 @@
 
 <?php if ($mode === "default"): ?>
 
-  <div class="card shadow-sm">
+  <div class="card shadow-sm bg-white">
     <div class="card-header">
       <h2 class="h5 mb-0">Gestion d'une agence</h2>
     </div>
@@ -36,7 +36,7 @@
 
 <?php elseif ($mode === "create" || $mode === "edit"): ?>
 
-  <div class="card shadow-sm">
+  <div class="card shadow-sm bg-white">
     <div class="card-header">
       <h2 class="h5 mb-0">
         <?= $mode === "create"

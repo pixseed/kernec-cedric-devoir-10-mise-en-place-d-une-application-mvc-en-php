@@ -25,12 +25,14 @@ $pageActions = [
   <div class="row content-row g-3">
 
     <div class="col-12 col-lg-6 d-flex flex-column order-2 order-lg-1">
-      <div class="scrollable-content border rounded">
+      <div class="scrollable-content table-responsive border rounded bg-white">
         <table class="table table-bordered table-striped table-hover align-middle text-center mb-0">
           <thead class="table-dark">
             <tr>
               <th>Agence</th>
-              <th></th>
+              <th>
+                <span class="visually-hidden">Actions</span>
+              </th>
             </tr>
           </thead>
 
