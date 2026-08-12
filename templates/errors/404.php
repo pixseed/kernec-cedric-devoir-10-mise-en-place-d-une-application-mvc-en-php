@@ -9,7 +9,7 @@
 $homeUrl = $baseFolder;
 
 if ($role === "admin") {
-  $homeUrl .="/admin";
+  $homeUrl .= "/admin";
 }
 ?>
 

@@ -11,14 +11,14 @@ use App\Helpers\DateHelper;
 // Configuration dynamique du header de la page.
 $pageTitle = "Trajets proposés";
 
-$pageTitleClass= !isset($_SESSION["user_id"])
+$pageTitleClass = !isset($_SESSION["user_id"])
   ? "visually-hidden"
   : "";
 
 $pageActions = [];
 ?>
 
-<div class="container">
+<div class="container container-page">
   <?php require __DIR__ . "/../partials/_pageHeader.php" ?>
 
   <?php if (!isset($_SESSION["user_id"])): ?>
@@ -27,7 +27,7 @@ $pageActions = [];
     </p>
   <?php endif; ?>
 
-  <div class="table-responsive border rounded">
+  <div class="scrollable-content table-responsive flex-grow-1 border rounded">
     <table class="table table-bordered table-striped table-hover align-middle text-center mb-0">
       <thead class="table-dark">
         <tr>

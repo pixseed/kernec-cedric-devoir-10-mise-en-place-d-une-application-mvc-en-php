@@ -22,6 +22,7 @@ class UserController extends AbstractController
     $users = $userModel->findAll();
 
     $this->render("user/index.php", [
+      "bodyClass" => "app-body--fixed",
       "users" => $users
     ]);
   }

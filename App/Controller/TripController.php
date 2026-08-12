@@ -26,6 +26,7 @@ class TripController extends AbstractController
     $trips = $tripModel->findAll();
     
     $this->render("trip/index.php", [
+      "bodyClass" => "app-body--fixed",
       "trips" => $trips
     ]);
   }

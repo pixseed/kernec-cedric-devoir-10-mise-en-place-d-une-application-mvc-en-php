@@ -60,7 +60,7 @@ $submitLabel = $isEdit
         Auteur
       </legend>
 
-      <div class="d-flex align-items-center justify-content-between pb-1">
+      <div class="d-flex flex-column flex-md-row justify-content-between gap-2 pb-1">
         <div class="fw-bold">
           <i class="bi bi-person-fill me-1" aria-hidden="true"></i>
           <span>
@@ -85,17 +85,17 @@ $submitLabel = $isEdit
   <form
     action="<?= $formAction ?>"
     method="POST"
-    class="d-flex flex-column border rounded p-3 bg-body-tertiary"
+    class="border rounded p-3 bg-body-tertiary"
     novalidate>
-    <div class="row">
-      <div class="col-5">
+    <div class="row g-4">
+      <div class="col-12 col-lg-5">
         <h2>Départ</h2>
 
         <hr>
 
         <div class="mb-3">
-          <div class="d-flex gap-3">
-            <div>
+          <div class="row g-3">
+            <div class="col-12 col-sm">
               <label for="departureDate" class="form-label">Date</label>
               <input
                 type="date"
@@ -112,7 +112,7 @@ $submitLabel = $isEdit
               <?php endif; ?>
             </div>
 
-            <div>
+            <div class="col-12 col-sm">
               <label for="departureHour" class="form-label">Heure</label>
               <input
                 type="time"
@@ -167,14 +167,14 @@ $submitLabel = $isEdit
         <?php endif; ?>
       </div>
 
-      <div class="col-5">
+      <div class="col-12 col-lg-5">
         <h2>Arrivée</h2>
 
         <hr>
 
         <div class="mb-3">
-          <div class="d-flex gap-3">
-            <div>
+          <div class="row g-3">
+            <div class="col-12 col-sm">
               <label for="arrivalDate" class="form-label">Date</label>
               <input
                 type="date"
@@ -191,7 +191,7 @@ $submitLabel = $isEdit
               <?php endif; ?>
             </div>
 
-            <div>
+            <div class="col-12 col-sm">
               <label for="arrivalHour" class="form-label">Heure</label>
               <input
                 type="time"
@@ -251,7 +251,7 @@ $submitLabel = $isEdit
         <?php endif; ?>
       </div>
 
-      <div class="col-2">
+      <div class="col-12 col-lg-2">
         <h2>Places</h2>
 
         <hr>

@@ -7,7 +7,7 @@
  */
 
 // Configuration dynamique du header de la page.
-$pageTitle = "Liste des utilisateurs";
+$pageTitle = "Liste des agences";
 
 $pageActions = [
   [
@@ -19,12 +19,13 @@ $pageActions = [
 ];
 ?>
 
-<div class="container">
+<div class="container container-page">
   <?php require __DIR__ . "/../partials/_pageHeader.php"; ?>
 
-  <div class="row">
-    <div class="col-6">
-      <div class="table-responsive border rounded">
+  <div class="row content-row g-3">
+
+    <div class="col-12 col-lg-6 d-flex flex-column order-2 order-lg-1">
+      <div class="scrollable-content border rounded">
         <table class="table table-bordered table-striped table-hover align-middle text-center mb-0">
           <thead class="table-dark">
             <tr>
@@ -62,8 +63,10 @@ $pageActions = [
       </div>
     </div>
 
-    <div class="col-6">
+    <div class="col-12 col-lg-6 d-flex flex-column order-1 order-lg-2">
+      <div class="scrollable-content">
       <?php require __DIR__ . "/_form.php"; ?>
+      </div>
     </div>
 
   </div>
