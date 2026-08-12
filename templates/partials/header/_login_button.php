@@ -6,4 +6,4 @@
  */
 ?>
 
-<a href="<?= $baseFolder ?>/login" class="btn btn-primary">Connexion</a>
+<a href="<?= $baseFolder ?>/login" class="btn btn-primary w-100">Connexion</a>

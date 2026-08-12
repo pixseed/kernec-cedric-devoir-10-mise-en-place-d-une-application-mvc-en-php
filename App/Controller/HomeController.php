@@ -20,6 +20,7 @@ class HomeController extends AbstractController
     $trips = $tripModel->findAllAvailable();
 
     $this->render("home/index.php", [
+      "bodyClass" => "app-body--fixed",
       "trips" => $trips,
     ]);
   }

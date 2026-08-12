@@ -6,4 +6,4 @@
  */
 ?>
 
-<a href="<?= $baseFolder ?>/logout" class="btn btn-outline-dark btn-logout">Déconnexion</a>
+<a href="<?= $baseFolder ?>/logout" class="btn btn-outline-dark w-100 btn-logout">Déconnexion</a>

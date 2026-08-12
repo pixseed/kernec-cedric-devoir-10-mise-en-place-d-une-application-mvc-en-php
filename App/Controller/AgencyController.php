@@ -22,7 +22,9 @@ class AgencyController extends AbstractController
     // Affiche la liste des agences avec la vue par défaut.
     $this->renderAgencyForm(
       null,
-      "default"
+      "default", [
+        "bodyClass" => "app-body--fixed",
+      ],
     );
   }
 

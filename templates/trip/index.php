@@ -16,21 +16,23 @@ $pageActions = [
     "url" => $baseFolder . "/trips/create",
     "label" => "Créer un trajet",
     "icon" => "bi-plus",
-    "class" => "btn-dark"
+    "class" => "btn-dark",
+    "order" => "order-2 order-sm-1"
   ],
   [
     "url" => $baseFolder . "/admin",
     "label" => "Tableau de bord",
     "icon" => "bi-house-fill",
-    "class" => "btn-outline-dark"
+    "class" => "btn-outline-dark",
+    "order" => "order-1 order-sm-2"
   ]
 ];
 ?>
 
-<div class="container">
+<div class="container container-page">
   <?php require __DIR__ . "/../partials/_pageHeader.php"; ?>
 
-  <div class="table-responsive border rounded">
+  <div class="scrollable-content table-responsive border rounded">
     <table class="table table-bordered table-striped table-hover align-middle text-center mb-0">
       <thead class="table-dark">
         <tr>
@@ -67,36 +69,38 @@ $pageActions = [
             </td>
 
             <td>
-              <button
-                type="button"
-                class="btn"
-                data-url="<?= htmlspecialchars($baseFolder . "/trips/" . $tripItem["idTrip"]) ?>"
-                aria-label="Voir les détails du trajet">
-                <i class="bi bi-eye" aria-hidden="true"></i>
-              </button>
+              <div class="d-flex flex-nowrap justify-content-center">
+                <button
+                  type="button"
+                  class="btn"
+                  data-url="<?= htmlspecialchars($baseFolder . "/trips/" . $tripItem["idTrip"]) ?>"
+                  aria-label="Voir les détails du trajet">
+                  <i class="bi bi-eye" aria-hidden="true"></i>
+                </button>
 
-              <a
-                href="<?= htmlspecialchars($baseFolder . "/trips/edit/" . $tripItem["idTrip"]) ?>"
-                class="btn"
-                aria-label="Éditer le trajet">
-                <i class="bi bi-pencil-square" aria-hidden="true"></i>
-              </a>
+                <a
+                  href="<?= htmlspecialchars($baseFolder . "/trips/edit/" . $tripItem["idTrip"]) ?>"
+                  class="btn"
+                  aria-label="Éditer le trajet">
+                  <i class="bi bi-pencil-square" aria-hidden="true"></i>
+                </a>
 
-              <button
-                type="button"
-                class="btn"
-                data-action="<?= htmlspecialchars($baseFolder . "/trips/delete/" . $tripItem["idTrip"]) ?>"
-                data-details-url="<?= htmlspecialchars($baseFolder . "/trips/" . $tripItem["idTrip"]) ?>"
-                data-delete-trip
-                data-departure="<?= htmlspecialchars($tripItem["departure"]) ?>"
-                data-start-date="<?= htmlspecialchars(DateHelper::formatDate($tripItem["startDate"])) ?>"
-                data-start-hour="<?= htmlspecialchars(DateHelper::formatHour($tripItem["startHour"])) ?>"
-                data-arrival="<?= htmlspecialchars($tripItem["arrival"]) ?>"
-                data-end-date="<?= htmlspecialchars(DateHelper::formatDate($tripItem["endDate"])) ?>"
-                data-end-hour="<?= htmlspecialchars(DateHelper::formatHour($tripItem["endHour"])) ?>"
-                aria-label=" Supprimer le trajet">
-                <i class="bi bi-trash3-fill" aria-hidden="true"></i>
-              </button>
+                <button
+                  type="button"
+                  class="btn"
+                  data-action="<?= htmlspecialchars($baseFolder . "/trips/delete/" . $tripItem["idTrip"]) ?>"
+                  data-details-url="<?= htmlspecialchars($baseFolder . "/trips/" . $tripItem["idTrip"]) ?>"
+                  data-delete-trip
+                  data-departure="<?= htmlspecialchars($tripItem["departure"]) ?>"
+                  data-start-date="<?= htmlspecialchars(DateHelper::formatDate($tripItem["startDate"])) ?>"
+                  data-start-hour="<?= htmlspecialchars(DateHelper::formatHour($tripItem["startHour"])) ?>"
+                  data-arrival="<?= htmlspecialchars($tripItem["arrival"]) ?>"
+                  data-end-date="<?= htmlspecialchars(DateHelper::formatDate($tripItem["endDate"])) ?>"
+                  data-end-hour="<?= htmlspecialchars(DateHelper::formatHour($tripItem["endHour"])) ?>"
+                  aria-label=" Supprimer le trajet">
+                  <i class="bi bi-trash3-fill" aria-hidden="true"></i>
+                </button>
+              </div>
             </td>
           </tr>
         <?php endforeach; ?>

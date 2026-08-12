@@ -7,7 +7,7 @@
  */
 ?>
 
-<span class="navbar-text mx-3">
+<span class="navbar-text mx-lg-3">
   Bonjour 
   <?= htmlspecialchars($firstname, ENT_QUOTES, "UTF-8") ?> 
   <?= htmlspecialchars($lastname, ENT_QUOTES, "UTF-8") ?>
