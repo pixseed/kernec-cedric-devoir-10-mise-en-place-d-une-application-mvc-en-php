@@ -22,7 +22,7 @@ $pageActions = [
 <div class="container container-page">
   <?php require __DIR__ . "/../partials/_pageHeader.php"; ?>
 
-  <div class="scrollable-content table-responsive border rounded">
+  <div class="scrollable-content table-responsive border rounded bg-white">
     <table class="table table-bordered table-striped table-hover align-middle text-center mb-0">
       <thead class="table-dark">
         <tr>

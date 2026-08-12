@@ -11908,6 +11908,21 @@ main {
     flex: 1 1 0;
     min-height: 0;
     overflow-y: auto;
+    scrollbar-color: #adb5db;
+  }
+  .scrollable-content::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  .scrollable-content::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .scrollable-content::-webkit-scrollbar-thumb {
+    background-color: #c2d9e7;
+    border-radius: 999px;
+  }
+  .scrollable-content::-webkit-scrollbar-thumb:hover {
+    background-color: #90a5bf;
   }
 }
 .alert {
@@ -11944,12 +11959,14 @@ header .navbar-brand:hover {
   border-color: #384050;
 }
 
-table {
+.table {
+  --bs-table-bg: #fff;
+  --bs-table-striped-bg: #f1f8fc;
   border-collapse: separate;
   border-spacing: 0;
 }
 
-table thead th {
+.table thead th {
   position: sticky;
   top: 0;
   z-index: 1;

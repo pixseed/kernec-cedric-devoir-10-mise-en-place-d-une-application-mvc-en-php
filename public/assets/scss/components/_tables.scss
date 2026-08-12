@@ -1,9 +1,14 @@
-table {
+@use "../abstracts/variables" as variables;
+
+.table {
+    --bs-table-bg: #fff;
+    --bs-table-striped-bg: #{variables.$light};
+
     border-collapse: separate;
     border-spacing: 0;
 }
 
-table thead th {
+.table thead th {
     position: sticky;
     top: 0;
     z-index: 1;
