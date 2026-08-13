@@ -10,6 +10,8 @@
  * @var array|null $errors
  */
 
+use App\Constants\Role;
+
 $isEdit = isset($data["idTrip"]);
 
 // Configuration dynamique du header de la page.
@@ -19,7 +21,7 @@ $pageTitle = $isEdit
 
 $pageActions = [];
 
-if ($role === "admin") {
+if ($role === Role::ADMIN) {
   $pageActions = [
     [
       "url" => $baseFolder . "/admin",
@@ -39,7 +41,7 @@ $resetUrl = $isEdit
   ? $baseFolder . "/trips/edit/" . $data["idTrip"]
   : $baseFolder . "/trips/create";
 
-$cancelUrl = $role === "admin"
+$cancelUrl = $role === Role::ADMIN
   ? $baseFolder . "/trips"
   : $baseFolder;
 

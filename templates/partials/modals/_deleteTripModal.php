@@ -5,6 +5,8 @@
  * @var string  $role
  */
 
+use App\Constants\Role;
+
 $modalId = "deleteTripModal";
 $modalLabelId = "deleteTripModalLabel";
 $modalTitle = "Confirmer la suppression";
@@ -16,7 +18,7 @@ ob_start();
   Êtes-vous sûr de vouloir <strong>supprimer</strong> ce trajet ?
 </p>
 
-<?php if ($role === "admin"): ?>
+<?php if ($role === Role::ADMIN): ?>
   <div>
     <div class="border rounded p-3 bg-body-tertiary mb-3">
       <div class="small text-muted mb-2">

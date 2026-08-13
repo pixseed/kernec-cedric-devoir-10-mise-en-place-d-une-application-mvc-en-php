@@ -5,12 +5,15 @@
  * @var string  $baseFolder
  * @var string  $role
  */
+
+use App\Constants\Role;
+
 ?>
 
 <?php
 $homeUrl = $baseFolder;
 
-if ($role === "admin") {
+if ($role === Role::ADMIN) {
   $homeUrl .= "/admin";
 }
 ?>

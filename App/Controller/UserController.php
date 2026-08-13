@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Constants\Role;
 use App\Core\AbstractController;
 use App\Model\UserModel;
 
@@ -15,7 +16,7 @@ class UserController extends AbstractController
    */
   public function index(): void
   {
-    $this->requireRole("admin");
+    $this->requireRole(Role::ADMIN);
 
     // Récupération des utilisateurs triés par nom puis prénom.
     $userModel = new UserModel();

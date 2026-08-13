@@ -7,6 +7,7 @@ namespace App\Controller;
 use App\Core\AbstractController;
 use App\Model\UserModel;
 use App\Validators\AuthValidator;
+use App\Constants\Role;
 
 class AuthController extends AbstractController
 {
@@ -82,7 +83,7 @@ class AuthController extends AbstractController
       "Vous êtes connecté avec succès."
     );
 
-    if($_SESSION["role"] === "admin") {
+    if($_SESSION["role"] === Role::ADMIN) {
       $this->redirect("/admin");
     }
     

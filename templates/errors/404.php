@@ -6,9 +6,11 @@
  * @var string $role
  */
 
+use App\Constants\Role;
+
 $homeUrl = $baseFolder;
 
-if ($role === "admin") {
+if ($role === Role::ADMIN) {
   $homeUrl .= "/admin";
 }
 ?>

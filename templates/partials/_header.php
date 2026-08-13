@@ -5,6 +5,9 @@
  * @var bool    $isAuthenticated
  * @var string  $role
  */
+
+use App\Constants\Role;
+
 ?>
 
 <header class="header bg-white">
@@ -30,7 +33,7 @@
           <?php if (!$isAuthenticated): ?>
             <?php require __DIR__ . "/header/_guest_menu.php" ?>
         
-          <?php elseif ($role === "admin"): ?>
+          <?php elseif ($role === Role::ADMIN): ?>
             <?php require __DIR__ . "/header/_admin_menu.php" ?>
         
           <?php else: ?>
