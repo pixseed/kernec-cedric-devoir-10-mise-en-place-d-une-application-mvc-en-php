@@ -83,8 +83,8 @@ class AuthController extends AbstractController
 
     // Données récupérées dans la session utilisateur.
     $_SESSION["user_id"] = $user["idUser"];
-    $_SESSION["firstname"] = $user["firstName"];
-    $_SESSION["lastname"] = $user["lastName"];
+    $_SESSION["firstName"] = $user["firstName"];
+    $_SESSION["lastName"] = $user["lastName"];
     $_SESSION["role"] = $user["role"];
 
     // Enregistrement du flash de connexion dans la session.

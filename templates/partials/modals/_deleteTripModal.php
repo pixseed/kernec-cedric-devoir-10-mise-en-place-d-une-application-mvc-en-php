@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Variables disponibles dans cette vue :
+ * @var string  $role
+ */
+
 $modalId = "deleteTripModal";
 $modalLabelId = "deleteTripModalLabel";
 $modalTitle = "Confirmer la suppression";
@@ -11,7 +16,7 @@ ob_start();
   Êtes-vous sûr de vouloir <strong>supprimer</strong> ce trajet ?
 </p>
 
-<?php if ($_SESSION["role"] === "admin"): ?>
+<?php if ($role === "admin"): ?>
   <div>
     <div class="border rounded p-3 bg-body-tertiary mb-3">
       <div class="small text-muted mb-2">

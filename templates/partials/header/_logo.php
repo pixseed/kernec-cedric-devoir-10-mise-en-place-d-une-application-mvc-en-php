@@ -3,13 +3,14 @@
 /**
  * Variables disponibles dans cette vue :
  * @var string  $baseFolder
+ * @var string  $role
  */
 ?>
 
 <?php
 $homeUrl = $baseFolder;
 
-if (isset($_SESSION["role"]) && $_SESSION["role"] === "admin") {
+if ($role === "admin") {
   $homeUrl .= "/admin";
 }
 ?>

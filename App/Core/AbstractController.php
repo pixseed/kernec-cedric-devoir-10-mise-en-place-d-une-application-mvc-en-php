@@ -72,8 +72,9 @@ abstract class AbstractController
     
     $isAuthenticated = $this->isAuthenticated();
 
-    $firstname = $_SESSION["firstname"] ?? "";
-    $lastname = $_SESSION["lastname"] ?? "";
+    $userId = $_SESSION["user_id"] ?? null;
+    $firstName = $_SESSION["firstName"] ?? "";
+    $lastName = $_SESSION["lastName"] ?? "";
     $role = $_SESSION["role"] ?? "";
 
     // URL absolue de l'application → À utiliser pour les ressources et redirections.
