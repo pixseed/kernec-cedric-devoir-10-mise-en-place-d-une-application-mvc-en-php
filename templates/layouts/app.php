@@ -5,7 +5,19 @@
  * @var string $view
  * @var string $baseUrl
  * @var string|null $mainClass
+ * @var string  $baseFolder
+ * @var string  $role
  */
+
+use App\Constants\Role;
+
+// Configuration de la redirection vers la page d'accueil en fonction du rôle de l'utilisateur.
+$homeUrl = $baseFolder;
+
+if ($role === Role::ADMIN) {
+  $homeUrl .= "/admin";
+}
+
 ?>
 
 <!DOCTYPE html>

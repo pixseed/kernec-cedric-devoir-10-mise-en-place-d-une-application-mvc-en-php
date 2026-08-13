@@ -2,13 +2,13 @@
 
 /**
  * Variables disponibles dans cette vue :
- * @var string  $firstname
- * @var string  $lastname
+ * @var string  $firstName
+ * @var string  $lastName
  */
 ?>
 
 <span class="navbar-text mx-lg-3">
   Bonjour 
-  <?= htmlspecialchars($firstname, ENT_QUOTES, "UTF-8") ?> 
-  <?= htmlspecialchars($lastname, ENT_QUOTES, "UTF-8") ?>
+  <?= htmlspecialchars($firstName) ?> 
+  <?= htmlspecialchars($lastName) ?>
 </span>

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Constants\Role;
 use App\Core\AbstractController;
 use App\Model\AgencyModel;
 use App\Model\TripModel;
@@ -17,7 +18,7 @@ class AdminController extends AbstractController
    */
   public function index(): void
   {
-    $this->requireRole("admin");
+    $this->requireRole(Role::ADMIN);
 
     // Récupération du nombre total d'utilisateurs.
     $userModel = new UserModel();

@@ -46,7 +46,7 @@ class AgencyValidator
   }
 
   /**
-   * Vérifie qu'aucune autre agebce ne possède déjà ce nom.
+   * Vérifie qu'aucune autre agence ne possède déjà ce nom.
    * ----------------------------------------------------------------------------
    * @param array $data ─ Données du formulaire
    * @param array $errors ─ Tableau des erreurs de validation

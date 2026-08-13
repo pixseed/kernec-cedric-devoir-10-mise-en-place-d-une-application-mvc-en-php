@@ -6,6 +6,8 @@
  * @var string $baseFolder
  */
 
+use App\Constants\Role;
+
 // Configuration dynamique du header de la page.
 $pageTitle = "Liste des utilisateurs";
 
@@ -42,7 +44,7 @@ $pageActions = [
             <td><?= htmlspecialchars($userItem["email"]) ?></td>
             <td><?= htmlspecialchars($userItem["phone"]) ?></td>
             <td>
-              <span class="badge <?= $userItem["role"] === "admin" ? "text-bg-success text-white" : "text-bg-primary" ?>">
+              <span class="badge <?= $userItem["role"] === Role::ADMIN ? "text-bg-success text-white" : "text-bg-primary" ?>">
                 <?= htmlspecialchars($userItem["role"]) ?>
               </span>
             </td>

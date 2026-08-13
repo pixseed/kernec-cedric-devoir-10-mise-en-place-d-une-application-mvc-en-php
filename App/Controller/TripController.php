@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Constants\Role;
 use App\Core\AbstractController;
 use App\Model\TripModel;
 use App\Model\AgencyModel;
@@ -19,7 +20,7 @@ class TripController extends AbstractController
    */
   public function index(): void
   {
-    $this->requireRole("admin");
+    $this->requireRole(Role::ADMIN);
 
     // Récupération de la liste des trajets triés par date et heure et de départ.
     $tripModel = new TripModel();
@@ -258,7 +259,7 @@ class TripController extends AbstractController
 
     // Vérification que l'utilisateur peut gérer le trajet.
     $isOwner = $trip["idUser"] === $_SESSION["user_id"];
-    $isAdmin = $_SESSION["role"] === "admin";
+    $isAdmin = $_SESSION["role"] === Role::ADMIN;
 
     if (!$isOwner && !$isAdmin) {
       throw new Exception("Vous n'êtes pas autorisé à modifier ce trajet.");
@@ -319,7 +320,7 @@ class TripController extends AbstractController
    */
   private function redirectAfterTripAction(): void
   {
-    if ($_SESSION["role"] === "admin") {
+    if ($_SESSION["role"] === Role::ADMIN) {
       $this->redirect("/trips");
     }
 

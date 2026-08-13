@@ -5,9 +5,12 @@
  * @var array $user
  * @var array $agencies
  * @var string $baseFolder
+ * @var string $role
  * @var array|null $data
  * @var array|null $errors
  */
+
+use App\Constants\Role;
 
 $isEdit = isset($data["idTrip"]);
 
@@ -18,7 +21,7 @@ $pageTitle = $isEdit
 
 $pageActions = [];
 
-if (($_SESSION["role"] ?? null) === "admin") {
+if ($role === Role::ADMIN) {
   $pageActions = [
     [
       "url" => $baseFolder . "/admin",
@@ -38,7 +41,7 @@ $resetUrl = $isEdit
   ? $baseFolder . "/trips/edit/" . $data["idTrip"]
   : $baseFolder . "/trips/create";
 
-$cancelUrl = $_SESSION["role"] === "admin"
+$cancelUrl = $role === Role::ADMIN
   ? $baseFolder . "/trips"
   : $baseFolder;
 

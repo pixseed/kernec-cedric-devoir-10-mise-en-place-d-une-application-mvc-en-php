@@ -6,9 +6,12 @@
  * @var string $baseFolder
  * @var array|null $agency
  */
+
+use App\Constants\FormMode;
+
 ?>
 
-<?php if ($mode === "default"): ?>
+<?php if ($mode === FormMode::DEFAULT): ?>
 
   <div class="card shadow-sm bg-white">
     <div class="card-header">
@@ -34,12 +37,12 @@
     </div>
   </div>
 
-<?php elseif ($mode === "create" || $mode === "edit"): ?>
+<?php elseif ($mode === FormMode::CREATE || $mode === FormMode::EDIT): ?>
 
   <div class="card shadow-sm bg-white">
     <div class="card-header">
       <h2 class="h5 mb-0">
-        <?= $mode === "create"
+        <?= $mode === FormMode::CREATE
           ? "Ajouter une agence"
           : "Modifier une agence" ?>
       </h2>
@@ -48,7 +51,7 @@
     <div class="card-body">
       <form
         action="<?= htmlspecialchars(
-                  $mode === "create"
+                  $mode === FormMode::CREATE
                     ? $baseFolder . "/agencies"
                     : $baseFolder . "/agencies/update/" . $agency["idAgency"]
                 ) ?>"
@@ -78,7 +81,7 @@
         <div class="d-flex justify-content-between">
           <a
             href="<?= htmlspecialchars($baseFolder . "/agencies") ?>"
-            aria-label="<?= $mode === "create"
+            aria-label="<?= $mode === FormMode::CREATE
                           ? "Annuler la création"
                           : "Annuler la modification" ?>"
             class="btn btn-outline-dark btn-cancel">
@@ -88,7 +91,7 @@
           <button
             type="submit"
             class="btn btn-primary">
-            <?= $mode === "create"
+            <?= $mode === FormMode::CREATE
               ? "Ajouter"
               : "Modifier" ?>
           </button>

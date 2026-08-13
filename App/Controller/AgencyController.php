@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Constants\FormMode;
+use App\Constants\Role;
 use App\Core\AbstractController;
 use App\Model\AgencyModel;
 use App\Validators\AgencyValidator;
@@ -17,14 +19,12 @@ class AgencyController extends AbstractController
    */
   public function index(): void
   {
-    $this->requireRole("admin");
+    $this->requireRole(Role::ADMIN);
 
     // Affiche la liste des agences avec la vue par défaut.
     $this->renderAgencyForm(
       null,
-      "default", [
-        "bodyClass" => "app-body--fixed",
-      ],
+      FormMode::DEFAULT,
     );
   }
 
@@ -34,12 +34,12 @@ class AgencyController extends AbstractController
    */
   public function create(): void
   {
-    $this->requireRole("admin");
+    $this->requireRole(Role::ADMIN);
 
     // Affiche la liste des agences et le formulaire de création.
     $this->renderAgencyForm(
       [],
-      "create"
+      FormMode::CREATE
     );
   }
 
@@ -49,7 +49,7 @@ class AgencyController extends AbstractController
    */
   public function store(): void
   {
-    $this->requireRole("admin");
+    $this->requireRole(Role::ADMIN);
 
     // Récupération des données du formulaire.
     $data = $this->getAgencyFormData();
@@ -62,7 +62,7 @@ class AgencyController extends AbstractController
     if (!empty($errors)) {
       $this->renderAgencyForm(
         $data,
-        "create",
+        FormMode::CREATE,
         $errors
       );
 
@@ -87,12 +87,12 @@ class AgencyController extends AbstractController
    */
   public function edit(int $idAgency): void
   {
-    $this->requireRole("admin");
+    $this->requireRole(Role::ADMIN);
 
     // Affiche la liste des agences et le formulaire d'édition pré-rempli.
     $this->renderAgencyForm(
       $this->getAgency($idAgency),
-      "edit"
+      FormMode::EDIT
     );
   }
 
@@ -103,7 +103,7 @@ class AgencyController extends AbstractController
    */
   public function update(int $id): void
   {
-    $this->requireRole("admin");
+    $this->requireRole(Role::ADMIN);
 
     // Vérifie que l'agence existe.
     $this->getAgency($id);
@@ -123,7 +123,7 @@ class AgencyController extends AbstractController
     if (!empty($errors)) {
       $this->renderAgencyForm(
         $data,
-        "edit",
+        FormMode::EDIT,
         $errors,
       );
 
@@ -148,7 +148,7 @@ class AgencyController extends AbstractController
    */
   public function delete(int $id): void
   {
-    $this->requireRole("admin");
+    $this->requireRole(Role::ADMIN);
 
     // Vérifie que l'agence existe.
     try {
@@ -222,10 +222,12 @@ class AgencyController extends AbstractController
   private function renderAgencyForm(
     ?array $agency,
     string $mode,
-    array $errors = []
+    array $errors = [],
+    array $viewData = []
   ): void
   {
     $this->render("agency/index.php", [
+      "bodyClass" => "app-body--fixed",
       "agencies"  => $this->getAgencies(),
       "agency"    => $agency,
       "mode"      => $mode,

@@ -5,13 +5,15 @@ use App\Helpers\DateHelper;
 /**
  * Variables disponibles dans cette vue :
  * @var array $trips
+ * @var int|null $userId
+ * @var bool $isAuthenticated
  * @var string $baseFolder
  */
 
 // Configuration dynamique du header de la page.
 $pageTitle = "Trajets proposés";
 
-$pageTitleClass = !isset($_SESSION["user_id"])
+$pageTitleClass = !$isAuthenticated
   ? "visually-hidden"
   : "";
 
@@ -21,7 +23,7 @@ $pageActions = [];
 <div class="container container-page">
   <?php require __DIR__ . "/../partials/_pageHeader.php" ?>
 
-  <?php if (!isset($_SESSION["user_id"])): ?>
+  <?php if (!$isAuthenticated): ?>
     <p class="fs-3 mb-3">
       Pour obtenir plus d'informations sur un trajet, veuillez vous connecter.
     </p>
@@ -38,7 +40,7 @@ $pageActions = [];
           <th>Date</th>
           <th>Heure</th>
           <th>Places</th>
-          <?php if (isset($_SESSION["user_id"])): ?>
+          <?php if ($isAuthenticated): ?>
             <th>
               <span class="visually-hidden">Actions</span>
             </th>
@@ -57,7 +59,7 @@ $pageActions = [];
             <td><?= htmlspecialchars(DateHelper::formatHour($tripItem["endHour"])) ?></td>
             <td><?= htmlspecialchars($tripItem["availableSeats"]) ?></td>
 
-            <?php if (isset($_SESSION["user_id"])): ?>
+            <?php if ($isAuthenticated): ?>
               <td>
                 <div class="d-flex flex-nowrap justify-content-center">
                   <button
@@ -68,7 +70,7 @@ $pageActions = [];
                     <i class="bi bi-eye" aria-hidden="true"></i>
                   </button>
 
-                  <?php if (isset($_SESSION["user_id"]) && $tripItem["idUser"] === $_SESSION["user_id"]): ?>
+                  <?php if ($tripItem["idUser"] === $userId): ?>
                     <a
                       href="<?= htmlspecialchars($baseFolder . "/trips/edit/" . $tripItem["idTrip"]) ?>"
                       class="btn"
