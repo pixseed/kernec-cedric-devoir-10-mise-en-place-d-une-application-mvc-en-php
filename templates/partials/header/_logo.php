@@ -2,20 +2,9 @@
 
 /**
  * Variables disponibles dans cette vue :
- * @var string  $baseFolder
- * @var string  $role
+ * @var string  $homeUrl
  */
 
-use App\Constants\Role;
-
-?>
-
-<?php
-$homeUrl = $baseFolder;
-
-if ($role === Role::ADMIN) {
-  $homeUrl .= "/admin";
-}
 ?>
 
 
