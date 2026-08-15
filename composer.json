@@ -13,6 +13,11 @@
             "App\\": "App/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
     "authors": [
         {
             "name": "CedricKernec",

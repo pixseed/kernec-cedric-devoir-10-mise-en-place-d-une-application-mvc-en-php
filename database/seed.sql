@@ -19,7 +19,7 @@ INSERT INTO agencies (name) VALUES
 -- Data `touche_pas_au_klaxon`.`users`
 -- -----------------------------------------------------
 INSERT INTO users (lastName, firstName, phone, email, password, role) VALUES
-("Kernec","Cédric","06425550387","admin@touchepasauklaxon.fr","$2y$10$duLIvaiWhYWGtYCSuKBL1.wUA.31pO88v1WKoyVFhyD.EkkFOzebq","admin"),
+("Kernec","Cédric","0642555038","admin@touchepasauklaxon.fr","$2y$10$duLIvaiWhYWGtYCSuKBL1.wUA.31pO88v1WKoyVFhyD.EkkFOzebq","admin"),
 ("Martin","Alexandre","0612345678","alexandre.martin@email.fr","$2y$10$HbRzGExOdx8Nx9DlfrSeq.PQakt.jVfIQho9lVFl8.5wvciBZPkmK","user"),
 ("Dubois","Sophie","0698765432","sophie.dubois@email.fr","$2y$10$.sEMqqQIah4aa4vR7iJWS.5j5gHoT9OFAM3oPzK8Kq.OjdjQnqGXy","user"),
 ("Bernard","Julien","0622446688","julien.bernard@email.fr","$2y$10$0bclsV3xtSnkxY3gMpFIa.1fCj/aVt0Tp5OjwDhauBeMcdtkkp00O","user"),
@@ -28,7 +28,7 @@ INSERT INTO users (lastName, firstName, phone, email, password, role) VALUES
 ("Leroy","Thomas","0655443322","thomas.leroy@email.fr","$2y$10$Jj8L2cAeEGmdbiJ5YvlH2.6JPpbQgB28eAzzRfpcZ/4DxJF/.qiNW","user"),
 ("Roux","Chloé","0633221199","chloe.roux@email.fr","$2y$10$93M2GTmrmN6KxQZCrpa5nusRWxzXN3FGuztrf0UB8IFBlzZCc6rGq","user"),
 ("Petit","Maxime","0766778899","maxime.petit@email.fr","$2y$10$JVZps/jnEWHbv7YpsneVMOhVaxaSMS1QWqijqrQelBrqO3/z2qKSO","user"),
-("Garnier","Laura","0688776655","laura.garnier@email.fr","$$2y$10$x5yWjauHu8RTAmOwTuKW1OdgxMbneoqPF6VVTA7uBzE45i1RtsEr2","user"),
+("Garnier","Laura","0688776655","laura.garnier@email.fr","$2y$10$x5yWjauHu8RTAmOwTuKW1OdgxMbneoqPF6VVTA7uBzE45i1RtsEr2","user"),
 ("Dupuis","Antoine","0744556677","antoine.dupuis@email.fr","$2y$10$xKBSTWx.MTDt4GnASjKlYOyAlhT.wUOXYPS/mGP3.zIrelQ1AvJjq","user"),
 ("Lefebvre","Emma","0699887766","emma.lefebvre@email.fr","$2y$10$ou6rBIy/U2GlVCL6J2EGUOGMirZLlBxuRAqk6nbLLuC1IKLxgB1yO","user"),
 ("Fontaine","Louis","0655667788","louis.fontaine@email.fr","$2y$10$krlDiy89nvwVn9S39MxLw.lHa03Rl2TZwQk7lFMADXVTfxfLpvSVe","user"),

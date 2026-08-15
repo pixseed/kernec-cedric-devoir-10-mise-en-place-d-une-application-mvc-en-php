@@ -1,4 +1,5 @@
 .env
+.env.test
 /vendor/
 /node_modules/
 public/assets/css/style.css.map

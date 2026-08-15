@@ -1,16 +1,7 @@
 -- -----------------------------------------------------
--- Schema touche_pas_au_klaxon
+-- Table `users`
 -- -----------------------------------------------------
-DROP DATABASE IF EXISTS touche_pas_au_klaxon;
-CREATE DATABASE touche_pas_au_klaxon
-DEFAULT CHARACTER SET utf8mb4
-COLLATE utf8mb4_unicode_ci;
-USE touche_pas_au_klaxon;
-
--- -----------------------------------------------------
--- Table `touche_pas_au_klaxon`.`users`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `touche_pas_au_klaxon`.`users` (
+CREATE TABLE IF NOT EXISTS `users` (
   `idUser` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `lastName` VARCHAR(100) NOT NULL,
   `firstName` VARCHAR(100) NOT NULL,
@@ -24,9 +15,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `touche_pas_au_klaxon`.`agencies`
+-- Table `agencies`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `touche_pas_au_klaxon`.`agencies` (
+CREATE TABLE IF NOT EXISTS `agencies` (
   `idAgency` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`idAgency`),
@@ -35,9 +26,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `touche_pas_au_klaxon`.`trips`
+-- Table `trips`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `touche_pas_au_klaxon`.`trips` (
+CREATE TABLE IF NOT EXISTS `trips` (
   `idTrip` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `startDate` DATE NOT NULL,
   `startHour` TIME NOT NULL,
@@ -52,17 +43,17 @@ CREATE TABLE IF NOT EXISTS `touche_pas_au_klaxon`.`trips` (
   UNIQUE INDEX `idTrip_UNIQUE` (`idTrip` ASC),
   CONSTRAINT `fk_trip_user`
     FOREIGN KEY (`idUser`)
-    REFERENCES `touche_pas_au_klaxon`.`users` (`idUser`)
+    REFERENCES `users` (`idUser`)
     ON DELETE RESTRICT
     ON UPDATE CASCADE,
   CONSTRAINT `fk_trip_start_agency`
     FOREIGN KEY (`idStartAgency`)
-    REFERENCES `touche_pas_au_klaxon`.`agencies` (`idAgency`)
+    REFERENCES `agencies` (`idAgency`)
     ON DELETE RESTRICT
     ON UPDATE CASCADE,
   CONSTRAINT `fk_trip_end_agency`
     FOREIGN KEY (`idEndAgency`)
-    REFERENCES `touche_pas_au_klaxon`.`agencies` (`idAgency`)
+    REFERENCES `agencies` (`idAgency`)
     ON DELETE RESTRICT
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
