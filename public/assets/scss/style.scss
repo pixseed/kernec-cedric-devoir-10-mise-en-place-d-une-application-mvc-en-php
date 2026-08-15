@@ -4,14 +4,9 @@
 // Bootstrap
 @use "vendors/bootstrap";
 
-// Abstracts
-@use "abstracts/functions";
-@use "abstracts/mixins";
-
 // Base
 @use "base/global";
 @use "base/reset";
-@use "base/typography";
 
 // Layout
 @use "layout/header";
@@ -23,10 +18,5 @@
 @use "components/flash";
 
 // Pages
-@use "pages/agency";
 @use "pages/dashboard";
 @use "pages/error";
-@use "pages/home";
-@use "pages/login";
-@use "pages/trip";
-@use "pages/user";
