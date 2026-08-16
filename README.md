@@ -361,13 +361,13 @@ Créer le fichier `.env` à partir du fichier d'exemple :
 cp .env.example .env
 ```
 
-Puis renseigner dans `.env` les paramètres correspondant au serveur MySQL utilisé :
+Puis adapter dans `.env` les paramètres à l'environnement local utilisé :
 
-- l'hôte du serveur
-- le port MySQL
-- le nom de la base de données
-- l'utilisateur MySQL
-- le mot de passe MySQL
+- les paramètres de connexion au serveur MySQL (`DB_*`)
+- le nom et l'environnement de l'application (`APP_NAME`, `APP_ENV`)
+- l'activation ou non du mode debug (`APP_DEBUG`)
+- l'URL de base de l'application (`APP_BASE_URL`)
+- le chemin de base utilisé par l'application (`APP_BASE_FOLDER`)
 
 Le compte MySQL utilisé doit disposer des privilèges permettant la création et la suppression de base de données.
 
