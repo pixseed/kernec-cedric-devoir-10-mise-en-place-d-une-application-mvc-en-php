@@ -24,8 +24,7 @@ abstract class AbstractModel
       return;
     }
 
-    $database = new Database();
-    $this->connection = $database->getConnection();
+    $this->connection = Database::getInstance()->getConnection();
   }
 
   /**

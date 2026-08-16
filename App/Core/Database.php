@@ -11,13 +11,14 @@ use RuntimeException;
  */
 class Database
 {
-  private ?PDO $connection = null;
+  private static ?Database $instance = null;
+  private PDO $connection;
 
   /**
    * Établit la connexion PDO à partir de la configuration.
    * ----------------------------------------------------------------------------
    */
-  public function __construct()
+  private function __construct()
   {
     $config = require __DIR__ . "/../../config/database.php";
 
@@ -47,7 +48,20 @@ class Database
   }
 
   /**
-   * Retourne l'instance PDO de connexion à la base de données.
+   * Retourne l'instance unique de la classe Database.
+   * ----------------------------------------------------------------------------
+   */
+  public static function getInstance(): Database
+  {
+    if (self::$instance === null) {
+      self::$instance = new self();
+    }
+
+    return self::$instance;
+  }
+
+  /**
+   * Retourne la connexion PDO.
    * ----------------------------------------------------------------------------
    */
   public function getConnection(): PDO
