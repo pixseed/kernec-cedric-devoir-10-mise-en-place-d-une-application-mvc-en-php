@@ -50,8 +50,20 @@ try {
 
   echo "------------------------------------------------------" . PHP_EOL;
   echo "✅ Connexion au serveur MySQL réussie !" . PHP_EOL;
+
+  $dbName = $config["dbname"];
+
+  $pdo->exec("DROP DATABASE IF EXISTS `{$dbName}`");
+  $pdo->exec(
+    "CREATE DATABASE `{$dbName}`
+    DEFAULT CHARACTER SET utf8mb4
+    COLLATE utf8mb4_unicode_ci"
+  );
+  $pdo->exec("USE `{$dbName}`");
+
   executeSqlFile($pdo, __DIR__ . "/schema.sql");
   executeSqlFile($pdo, __DIR__ . "/seed.sql");
+  
   echo "------------------------------------------------------" . PHP_EOL;
   echo "🚀 Base de données initialisée avec succès !" . PHP_EOL;
   echo "------------------------------------------------------" . PHP_EOL;

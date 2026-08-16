@@ -14,9 +14,16 @@ abstract class AbstractModel
   /**
    * Initialise automatiquement la connexion PDO.
    * ----------------------------------------------------------------------------
+   * @param PDO|null $connection ─ Connexion PDO à utiliser si elle est fournie
    */
-  public function __construct()
+  public function __construct(?PDO $connection = null)
   {
+    if ($connection !== null) {
+      $this->connection = $connection;
+
+      return;
+    }
+
     $database = new Database();
     $this->connection = $database->getConnection();
   }
