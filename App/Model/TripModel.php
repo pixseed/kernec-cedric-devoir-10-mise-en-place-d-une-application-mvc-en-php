@@ -252,14 +252,6 @@ class TripModel extends AbstractModel {
    */
   public function countAll(): int
   {
-    $stmt = $this->connection->prepare(
-      "SELECT COUNT(*) AS total FROM trips"
-    );
-
-    $stmt->execute();
-
-    $result = $stmt->fetch();
-
-    return (int) $result["total"];
+    return $this->countRecords("trips");
   }
 }
