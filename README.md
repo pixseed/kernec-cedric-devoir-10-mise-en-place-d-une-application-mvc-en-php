@@ -459,8 +459,8 @@ La documentation du projet est disponible dans le dossier [`docs/`](docs/).
 
 Elle comprend notamment :
 
-- le cahier de projet au format Markdown : [`docs/project.md`](docs/project.md)
-- le cahier de projet exporté au format PDF : [`docs/project.pdf`](docs/project.pdf)
+- le cahier de projet au format Markdown : [`docs/Kernec_Cedric_Devoir_10_Touche_pas_au_klaxon.md`](docs/Kernec_Cedric_Devoir_10_Touche_pas_au_klaxon.md)
+- le cahier de projet exporté au format PDF : [`docs/Kernec_Cedric_Devoir_10_Touche_pas_au_klaxon.pdf`](docs/Kernec_Cedric_Devoir_10_Touche_pas_au_klaxon.pdf)
 - les ressources graphiques utilisées dans la documentation : [`docs/assets/`](docs/assets/)
 - les fichiers sources des schémas de conception : [`docs/src/`](docs/src/)
 - le brief et les consignes fournis pour la réalisation du projet : [`docs/briefs`](docs/briefs)
