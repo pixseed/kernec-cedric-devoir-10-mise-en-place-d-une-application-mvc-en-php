@@ -51,6 +51,31 @@ class AgencyModel extends AbstractModel {
   }
 
   /**
+   * Vérifie si une agence est utilisée par au moins un trajet.
+   * ----------------------------------------------------------------------------
+   * @param int $idAgency ─ Identifiant unique de l'agence
+   * @return bool ─ True si l'agence est utilisée par un trajet, sinon false
+   */
+  public function isUsedByTrip(int $idAgency): bool
+  {
+    $stmt = $this->connection->prepare(
+      "SELECT EXISTS (
+        SELECT 1
+        FROM trips
+        WHERE idStartAgency = :idStartAgency
+          OR idEndAgency = :idEndAgency
+      )"
+    );
+
+    $stmt->execute([
+      ":idStartAgency" => $idAgency,
+      ":idEndAgency" => $idAgency
+    ]);
+
+    return (bool) $stmt->fetchColumn();
+  }
+
+  /**
    * Insert une agence dans la base.
    * ----------------------------------------------------------------------------
    * @param array $data ─ Tableau des données à insérer dans la base
