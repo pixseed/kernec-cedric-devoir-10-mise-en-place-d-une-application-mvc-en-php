@@ -12,15 +12,30 @@ class UserModel extends AbstractModel
    * Recherche un utilisateur via l'email.
    * ----------------------------------------------------------------------------
    * @param string $email ─ Adresse email de l'utilisateur recherché
-   * @return array|false ─ Tableau de données de l'utilisateur ou false s'il n'existe pas
+   * @return array{
+   *    idUser: int,
+   *    lastName: string,
+   *    firstName: string,
+   *    password: string,
+   *    role: string
+   * }|false ─ Données d'authentification ou false s'il n'existe pas
    */
   public function findByEmail(string $email): array|false
   {
     $stmt = $this->connection->prepare(
-      "SELECT * FROM users WHERE email = ?"
+      "SELECT
+          idUser,
+          lastName,
+          firstName,
+          password,
+          role
+      FROM users
+      WHERE email = :email"
     );
 
-    $stmt->execute([$email]);
+    $stmt->execute([
+      ":email" => $email
+    ]);
 
     $user = $stmt->fetch();
 
@@ -31,7 +46,14 @@ class UserModel extends AbstractModel
    * Recherche un utilisateur à partir de son identifiant.
    * ----------------------------------------------------------------------------
    * @param int $idUser ─ Identifiant unique de l'utilisateur
-   * @return array|false ─ Tableau de données de l'utilisateur ou false s'il n'existe pas
+   * @return array{
+   *    idUser: int,
+   *    lastName: string,
+   *    firstName: string,
+   *    email: string,
+   *    phone: string,
+   *    role: string
+   * }|false ─ Données de l'utilisateur ou false s'il n'existe pas
    */
   public function findById(int $idUser): array|false
   {
@@ -57,7 +79,14 @@ class UserModel extends AbstractModel
   /**
    * Recherche tous les utilisateurs existants.
    * ----------------------------------------------------------------------------
-   * @return array ─ Tableau des utilisateurs
+   * @return array{
+   *    idUser: int,
+   *    lastName: string,
+   *    firstName: string,
+   *    email: string,
+   *    phone: string,
+   *    role: string
+   * } ─ Liste des utilisateurs
    */
   public function findAll(): array
   {

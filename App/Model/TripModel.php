@@ -10,7 +10,19 @@ class TripModel extends AbstractModel {
   /**
    * Recherche tous les trajets.
    * ----------------------------------------------------------------------------
-   * @return array ─ Tableau des trajets
+   * @return list<array{
+   *    idTrip: int,
+   *    idUser: int,
+   *    departure: string,
+   *    startDate: string,
+   *    startHour: string,
+   *    arrival: string,
+   *    endDate: string,
+   *    endHour: string,
+   *    availableSeats: int,
+   *    numberSeats: int,
+   *    status: string
+   * }> ─ Liste des trajets
    */
   public function findAll(): array
   {
@@ -51,7 +63,18 @@ class TripModel extends AbstractModel {
   /**
    * Recherche tous les trajets disponibles à venir.
    * ----------------------------------------------------------------------------
-   * @return array ─ Tableau des trajets disponibles
+   * @return list<array{
+   *    idTrip: int,
+   *    idUser: int,
+   *    departure: string,
+   *    startDate: string,
+   *    startHour: string,
+   *    arrival: string,
+   *    endDate: string,
+   *    endHour: string,
+   *    availableSeats: int,
+   *    numberSeats: int
+   * }> ─ Liste des trajets disponibles
    */
   public function findAllAvailable(): array
   {
@@ -88,7 +111,12 @@ class TripModel extends AbstractModel {
    * Recherche les informations complémentaires d'un trajet à partir de son identifiant.
    * ----------------------------------------------------------------------------
    * @param int $idTrip ─ Identifiant unique du trajet
-   * @return array|false ─ Tableau de données complémentaire du trajet ou false s'il n'existe pas
+   * @return array{
+   *    author: string,
+   *    phone: string,
+   *    email: string,
+   *    numberSeats: int
+   * }|false ─ Données complémentaires du trajet ou false s'il n'existe pas
    */
   public function findDetailsById(int $idTrip): array|false
   {
@@ -117,7 +145,18 @@ class TripModel extends AbstractModel {
    * Recherche un trajet à partir de son identifiant.
    * ----------------------------------------------------------------------------
    * @param int $idTrip ─ Identifiant unique du trajet
-   * @return array|false ─ Tableau de données du trajet ou false s'il n'existe pas
+   * @return array{
+   *    idTrip: int,
+   *    startDate: string,
+   *    startHour: string,
+   *    endDate: string,
+   *    endHour: string,
+   *    numberSeats: int,
+   *    availableSeats: int,
+   *    idUser: int,
+   *    idStartAgency: int,
+   *    idEndAgency: int
+   * }|false ─ Données du trajet ou false s'il n'existe pas
    */
   public function findById(int $idTrip): array|false
   {
@@ -147,7 +186,17 @@ class TripModel extends AbstractModel {
   /**
    * Insert les données d'un nouveau trajet dans la base.
    * ----------------------------------------------------------------------------
-   * @param array $data ─ Tableau des données à insérer dans la base
+   * @param array{
+   *    startDate: string,
+   *    startHour: string,
+   *    endDate: string,
+   *    endHour: string,
+   *    numberSeats: int,
+   *    availableSeats: int,
+   *    idUser: int,
+   *    idStartAgency: int,
+   *    idEndAgency: int
+   * } $data ─ Données du trajet à insérer
    * @return bool ─ True si le trajet a été créé avec succès, sinon false
    */
   public function insert(array $data): bool
@@ -195,7 +244,16 @@ class TripModel extends AbstractModel {
    * Met à jour les données d'un trajet dans la base.
    * ----------------------------------------------------------------------------
    * @param int $idTrip ─ Identifiant unique du trajet modifié
-   * @param array $data ─ Données à mettre à jour
+   * @param array{
+   *    startDate: string,
+   *    startHour: string,
+   *    endDate: string,
+   *    endHour: string,
+   *    numberSeats: int,
+   *    availableSeats: int,
+   *    idStartAgency: int,
+   *    idEndAgency: int
+   * } $data ─ Données du trajet à mettre à jour
    * @return bool ─ True si le trajet a été modifié avec succès, sinon false
    */
   public function update(int $idTrip, array $data): bool
