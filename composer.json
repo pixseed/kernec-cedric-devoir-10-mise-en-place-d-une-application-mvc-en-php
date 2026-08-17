@@ -6,7 +6,8 @@
   "scripts": {
     "db:init": "@php database/init.php",
     "analyse": "phpstan analyse",
-    "test": "phpunit"
+    "test": "phpunit",
+    "docs": "phpdoc -d App -t docs/api"
   },
   "autoload": {
     "psr-4": {
@@ -33,6 +34,7 @@
   },
   "require-dev": {
     "phpstan/phpstan": "^2.2",
-    "phpunit/phpunit": "^11.5"
+    "phpunit/phpunit": "^11.5",
+    "phpdocumentor/phpdocumentor": "*"
   }
 }

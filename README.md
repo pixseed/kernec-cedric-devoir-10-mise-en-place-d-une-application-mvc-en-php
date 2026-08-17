@@ -39,6 +39,7 @@ L'application permet aux utilisateurs de consulter et de proposer des trajets en
   - [Qualité du code](#qualité-du-code)
     - [Analyse statique](#analyse-statique)
     - [Tests automatisés](#tests-automatisés)
+    - [Documentation technique](#documentation-technique)
   - [Documentation](#documentation)
   - [Informations](#informations)
 
@@ -50,13 +51,14 @@ L'application permet aux utilisateurs de consulter et de proposer des trajets en
 |-------------|---------|
 | PHP | ![PHP](https://img.shields.io/badge/8.2-4F5B93?logo=php&logoColor=white)|
 | Buki Router | ![Buki Router](https://img.shields.io/badge/3.1-4F5B93?logo=php&logoColor=white) |
+| PHPStan | ![PHPStan](https://img.shields.io/badge/2.2-4F5B93?logo=php&logoColor=white) |
+| PHPUnit | ![PHPUnit](https://img.shields.io/badge/11.5-4F5B93?logo=php&logoColor=white) |
+| PHPDoc | ![PHPDoc](https://img.shields.io/badge/3.9-4F5B93?logo=php&logoColor=white) |
 | MySQL | ![MySQL](https://img.shields.io/badge/8.0-f29221?logo=mysql&logoColor=white) |
 | Composer |![Composer](https://img.shields.io/badge/2.10-brown?logo=composer&logoColor=white) |
 | Bootstrap | ![Bootstrap](https://img.shields.io/badge/5.3.8-712cf9?logo=bootstrap&logoColor=white) |
 | Sass | ![Sass](https://img.shields.io/badge/1.102.0-c69?logo=sass&logoColor=white) |
 | Dotenv | ![Dotenv](https://img.shields.io/badge/5.6.4-F1F45A?logo=dotenv&logoColor=black) |
-| PHPStan | ![PHPStan](https://img.shields.io/badge/2.2-793862?logo=php&logoColor=white) |
-| PHPUnit | ![PHPUnit](https://img.shields.io/badge/11.5-793862?logo=php&logoColor=white) |
 
 L'application utilise Composer pour la gestion des dépendances PHP et l'autoload PSR-4, Buki Router pour le routage ainsi que npm pour la gestion de Sass et Bootstrap.
 
@@ -105,6 +107,17 @@ L'application utilise Composer pour la gestion des dépendances PHP et l'autoloa
 │  └─ seed.sql
 │
 ├─ docs
+│  ├─ api
+│  │  ├─ classes
+│  │  ├─ css
+│  │  ├─ files
+│  │  ├─ graphs
+│  │  ├─ indices
+│  │  ├─ js
+│  │  ├─ namespaces
+│  │  ├─ packages
+│  │  ├─ reports
+│  │  └─ index.html
 │  ├─ assets
 │  │  ├─ MCD.jpg
 │  │  ├─ MLD.png
@@ -450,6 +463,16 @@ composer test
 ```
 
 Les tests d'intégration des modèles utilisent une base de données MySQL dédiée afin de vérifier les opérations d'écriture sans modifier les données de l'application. La base de test est recréée automatiquement avant chaque test.
+
+### Documentation technique
+
+La documentation technique du code PHP est générée avec PHPDocumentor à partir des DocBlocks dans l'application :
+
+```bash
+composer docs
+```
+
+La documentation générée est disponible dans le dossier `docs/api/` et peut être consultée en ouvrant le fichier `docs/api/index.html`.
 
 ---
 
