@@ -10,7 +10,7 @@ class AgencyModel extends AbstractModel {
   /**
    * Recherche toutes les agences existantes.
    * ----------------------------------------------------------------------------
-   * @return array ─ Tableau des agences
+   * @return list<array{idAgency: int, name: string}> ─ Liste des agences
    */
   public function findAll(): array
   {
@@ -31,7 +31,7 @@ class AgencyModel extends AbstractModel {
    * Recherche une agence par son identifiant.
    * ----------------------------------------------------------------------------
    * @param int $idAgency ─ Identifiant unique de l'agence
-   * @return array|false ─ Tableau de données de l'agence ou false si elle n'existe pas
+   * @return array{idAgency: int, name: string}|false ─ Données de l'agence ou false si elle n'existe pas
    */
   public function findById(int $idAgency): array|false
   {
@@ -51,9 +51,34 @@ class AgencyModel extends AbstractModel {
   }
 
   /**
-   * Insert une agence dans la base.
+   * Vérifie si une agence est utilisée par au moins un trajet.
    * ----------------------------------------------------------------------------
-   * @param array $data ─ Tableau des données à insérer dans la base
+   * @param int $idAgency ─ Identifiant unique de l'agence
+   * @return bool ─ True si l'agence est utilisée par un trajet, sinon false
+   */
+  public function isUsedByTrip(int $idAgency): bool
+  {
+    $stmt = $this->connection->prepare(
+      "SELECT EXISTS (
+        SELECT 1
+        FROM trips
+        WHERE idStartAgency = :idStartAgency
+          OR idEndAgency = :idEndAgency
+      )"
+    );
+
+    $stmt->execute([
+      ":idStartAgency" => $idAgency,
+      ":idEndAgency" => $idAgency
+    ]);
+
+    return (bool) $stmt->fetchColumn();
+  }
+
+  /**
+   * Insère une agence dans la base.
+   * ----------------------------------------------------------------------------
+   * @param array{name: string} $data ─ Données de l'agence à insérer
    * @return bool ─ True si l'insertion a réussi, sinon false
    */
   public function insert(array $data): bool
@@ -72,7 +97,7 @@ class AgencyModel extends AbstractModel {
    * Met à jour une agence.
    * ----------------------------------------------------------------------------
    * @param int $idAgency ─ Identifiant unique de l'agence
-   * @param array $data ─ Données à mettre à jour
+   * @param array{name: string} $data ─ Données de l'agence à mettre à jour
    * @return bool ─ True si la modification a réussi, sinon false
    */
   public function update(int $idAgency, array $data): bool
@@ -149,14 +174,6 @@ class AgencyModel extends AbstractModel {
    */
   public function countAll(): int
   {
-    $stmt = $this->connection->prepare(
-      "SELECT COUNT(*) AS total FROM agencies"
-    );
-
-    $stmt->execute();
-
-    $result = $stmt->fetch();
-
-    return (int) $result["total"];
+    return $this->countRecords("agencies");
   }
 }

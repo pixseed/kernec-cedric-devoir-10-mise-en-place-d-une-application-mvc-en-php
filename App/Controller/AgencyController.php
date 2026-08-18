@@ -163,12 +163,23 @@ class AgencyController extends AbstractController
       return;
     }
 
+    // Empêche la suppression d'une agence utilisée par un trajet.
+    if ($this->getAgencyModel()->isUsedByTrip($id)) {
+      $this->setFlash(
+        "danger",
+        "Cette agence ne peut pas être supprimée car elle est utilisée par un ou plusieurs trajets."
+      );
+
+      $this->redirect("/agencies");
+      return;
+    }
+
     // Suppression des données dans la base.
     $this->getAgencyModel()->delete($id);
 
     $this->setFlash(
       "success",
-      "L'agence a été supprimé avec succès."
+      "L'agence a été supprimée avec succès."
     );
 
     $this->redirect("/agencies");
